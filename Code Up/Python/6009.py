@@ -1,0 +1,2 @@
+satsuki = input()
+print(satsuki)
