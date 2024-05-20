@@ -13,4 +13,4 @@ for _ in range(m):
 # 結果の出力
 print(*baskets)
 
-#peint(" ".join(map(str,baskets)))
+#print(" ".join(map(str,baskets)))
