@@ -25,6 +25,16 @@ def move_random():
 def change_black():
     t.pencolor("Black") 
     
+def change_Red():
+    t.pencolor("Red")
+    
+def change_red_black():
+    if t.pencolor() == "red":
+        t.pencolor("black")
+    elif t.pencolor() == "black":
+        t.pencolor("red")
+    
+    
 screen.listen()
 screen.onkey(move_forward,"Up")
 screen.onkey(move_backward,"Down")
@@ -32,5 +42,8 @@ screen.onkey(turn_left,"Left")
 screen.onkey(turn_right,"Right")
 screen.onkey(move_random,"c")
 screen.onkey(change_black,"b")
+screen.onkey(change_Red,"r")
+screen.onkey(change_red_black,"i")
+
 
 screen.mainloop()
