@@ -6,8 +6,18 @@ screen.title("Turtle 기보드 이벤트 처리 예제")
 
 t = turtle.Turtle()
 
+width = screen.window_width()//2
+height = screen.window_height()//2
+
+print(width,height)
+
+def move_turule():
+    x,y = t.position()
+    if x == width or x == -width or y == height or y == -height:
+        t.backward()
+
 def move_forward():
-    t.forward(100)
+    t.forward(100) 
     
     x , y = t.position()
     print(x,y)
