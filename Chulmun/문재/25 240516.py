@@ -7,17 +7,6 @@ for i in range(10):
     
 
 random_numbers = random.sample(numbers,3)
-
-# while len(random_numbers)<3:
-#     random_number = random.randint(0,9)
-#     flag = True
-#     for i in range(3):
-#         if i == random_number:
-#             flag = False
-#     if flag:
-#         random_numbers.append(random_number)    
-        
-
 print(random_numbers)
 
 str_random_numbers = " ".join(map(str,random_numbers))
@@ -46,13 +35,6 @@ while (count <= 5) and (out < 3) and (strike < 3):
             strike += 1
         elif random_numbers[i] in user_numbers:
             ball += 1
-    
-    # for i in range(3):
-    #     for j in range(3):
-    #         if random_numbers[i] == user_numbers[j]:
-    #             strike += 1
-    #         else:
-    #             ball += 1
 
     if strike == 0 and ball == 0:
         out += 1
