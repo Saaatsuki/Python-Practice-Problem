@@ -41,18 +41,18 @@ while (count <= 5) and (out < 3) and (strike < 3):
     print(random_numbers)
     print(user_numbers)
     
-    for i in range(3):
-        if random_numbers[i] == user_numbers[i]:
-            strike += 1
-        elif random_numbers[i] in user_numbers:
-            ball += 1
-    
     # for i in range(3):
-    #     for j in range(3):
-    #         if random_numbers[i] == user_numbers[j]:
-    #             strike += 1
-    #         else:
-    #             ball += 1
+    #     if random_numbers[i] == user_numbers[i]:
+    #         strike += 1
+    #     elif random_numbers[i] in user_numbers:
+    #         ball += 1
+    
+    for i in range(3):
+        for j in range(3):
+            if random_numbers[i] == user_numbers[j]:
+                strike += 1
+            else:
+                ball += 1
 
     if strike == 0 and ball == 0:
         out += 1
