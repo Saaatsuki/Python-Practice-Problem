@@ -6,3 +6,9 @@ for i in myString:
         count += 1
         
 print(f"문자열 단어 겟수 : {count}")
+
+myString = "lt is a great weather with you"
+
+str_list = list(myString.split())
+
+print("문자열 단어 갯수: ", len(str_list))
