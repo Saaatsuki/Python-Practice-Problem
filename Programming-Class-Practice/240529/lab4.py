@@ -7,7 +7,9 @@ for i in myString:
         
 print(f"문자열 단어 겟수 : {count}")
 
-myString = "lt is a great weather with you"
+########################################################
+
+myString = "It is a great weather with you"
 
 str_list = list(myString.split())
 

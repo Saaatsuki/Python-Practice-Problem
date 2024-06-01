@@ -23,7 +23,7 @@ print(f"선택된 단어 리스트: {pc_random_word_list}")
 blind_choice = random.sample(range(pc_random_word_len), blind_count)
 print(f"블라인드 처리할 인덱스: {blind_choice}")
 
-# Create a blind version of the word
+
 pc_random_word_list_blind = pc_random_word_list.copy()
 for i in blind_choice:
     pc_random_word_list_blind[i] = "_"
