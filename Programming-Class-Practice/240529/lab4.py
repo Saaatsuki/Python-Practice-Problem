@@ -13,4 +13,4 @@ myString = "It is a great weather with you"
 
 str_list = list(myString.split())
 
-print("문자열 단어 갯수: ", len(str_list))
+print(f"문자열 단어 갯수 : {len(str_list)}")
