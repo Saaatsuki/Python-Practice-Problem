@@ -20,7 +20,11 @@ print("単語選択完了ゲームを始めます。選択した単語：", sele
 # 選択した単語の文字の50％を"_"に変更する
 select_word_length = len(select_word)
 underbar = int(select_word_length * 0.5 + 0.5)
-indices = random.sample(range(select_word_length), underbar)
+indices = set()
+
+while len(indices) < underbar:
+    index = random.randint(0, select_word_length - 1)
+    indices.add(index)
 
 # リストに変換して文字を置き換える
 select_word_list = list(select_word)
