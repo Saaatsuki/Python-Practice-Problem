@@ -33,7 +33,7 @@ for _ in range(4):
     print()
 
 
-# 6)
+# 6)　continue
 for i in range(3, 7):
     for j in range(1, 5, 2):
         print(i)
@@ -44,4 +44,11 @@ for i in range(3, 7):
 
     if (i + j + k) % 2 == 0:        
         print(i + j + k)
+        
+# 7) pass
+value = 3
+if value > 3:
+    pass
+
+count = 2
     
