@@ -11,4 +11,4 @@ move_hour_sum = move_minu_sum/60
 avg_speed = move_km / move_hour_sum
 msg = "빠름" if 90<=avg_speed else "보통" if 60<=avg_speed<90 else "느림" 
 
-print(f"이동 거리 : {move_km:.1f}\n출발 시간 : {goout_hour}시 {goout_minu}분\n도착 시간 : {arr_hour}시 {arr_minu}분\n평균 속도 : {avg_speed:.2f}km/h\n속도 상태 : {msg}")
+print(f"이동 거리 : {move_km:.1f}km\n출발 시간 : {goout_hour}시 {goout_minu}분\n도착 시간 : {arr_hour}시 {arr_minu}분\n평균 속도 : {avg_speed:.2f}km/h\n속도 상태 : {msg}")
