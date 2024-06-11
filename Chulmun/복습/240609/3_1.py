@@ -19,13 +19,13 @@ else:  # event_code == "E3"
     tf_age = age >= 16
     tf_date = reservation_date % 7 == 0
     if not tf_age and not tf_date:
-        msg_result = "나이 제한으로 인해 선택하신 날짜에는 예약할 수 없습니다."
+        msg_result = "나이 제한으로 인해 선택하신 날짜에는"
     elif not tf_age:
-        msg_result = "나이 제한으로 인해 예약할 수 없습니다."
+        msg_result = "나이 제한으로 인해"
     elif not tf_date:
-        msg_result = "선택하신 날짜에는 예약할 수 없습니다."
+        msg_result = "선택하신 날짜에는"
 
-false_msg = f"{msg_result}"
+false_msg = f"{msg_result} 예약할 수 없습니다."
 if not tf_age or not tf_date:
     print(false_msg)
 else:
