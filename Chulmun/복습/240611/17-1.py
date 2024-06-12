@@ -19,7 +19,7 @@ while len(bli_ind_set)<bli_count:
     bli_ind_set.add(bli_ind)
 bli_ind_li = list(bli_ind_set)
 
-pc_sel_bli_li = pc_sel_li[:]
+pc_sel_bli_li = pc_sel_li[:] #pc_sel_li.copy()
 for i in bli_ind_li:
     pc_sel_bli_li[i]="_"
 game_count = 0
