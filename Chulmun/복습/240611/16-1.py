@@ -5,6 +5,7 @@ while len(com_num_ind_set) < 3:
     com_num_ind = random.randint(0, 9)
     com_num_ind_set.add(com_num_ind)
 com_num_ind_li = list(com_num_ind_set)
+print(com_num_ind_li)
 game_count = 0
 strike = 0
 ball = 0
@@ -19,7 +20,7 @@ while game_count < 5 and strike < 3 and out < 3:
     for i in range(3):
         if user_num_li[i] == com_num_ind_li[i]:
             strike += 1
-        elif [num for num in com_num_ind_li if num == user_num_li[i]]:
+        elif len([j for j in com_num_ind_li if j==user_num_li[i]])>0: #user_num_li[i] in com_num_ind_li:
             ball += 1
     msg_strike = f"{strike} Strike"
     msg_ball = f"{ball} Ball"
