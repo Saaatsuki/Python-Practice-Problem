@@ -1,4 +1,4 @@
-password = input("비밀본호를 입력하세요 : ")
+password = input("비밀번호를 입력하세요 : ")
 
 s_alp_tf = False
 b_alp_tf = False
