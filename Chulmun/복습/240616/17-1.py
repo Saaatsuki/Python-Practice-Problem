@@ -31,5 +31,5 @@ while len([i for i in hide_word_li if i=="_"])>0:# "_" in hide_word_li
         if com_word_li[i]==alp:
             hide_word_li[i]=alp
             count+=1
-    print(f"단어 대 포함되지 않은 말파벳 입니다.") if count==0 else print(f"입력한 알파벳 단어 내 포함 : {count}글자")
+    print(f"단어에 포함되지 않은 알파벳 입니다.") if count==0 else print(f"입력한 알파벳 단어 내 포함 : {count}글자")
 print(f"Clear!! - 선택된 단어 : {com_word} 총 시도 횟수 : {game_count}")
