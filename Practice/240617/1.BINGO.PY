@@ -15,13 +15,16 @@ game_count = 0
 bingo_count = 0
 user_num_li = []
 
-while bingo_count<3:
-    game_count+=1
+while bingo_count < 3:
+    game_count += 1
+    bingo_count = 0
+    
     user_num = int(input(f"{game_count}시도 - 숫자를 입력 해 주세요 : "))
-    while not (1 <= user_num <= 25):#len([i for i in bingo25_li if user_num==i])>0:# user_num in bingo25_li:
+    while not (1 <= user_num <= 25):
         user_num = int(input("1에서 25 사이의 숫자를 입력하세요: "))
 
-    user_num_li = user_num_li.append(user_num)
+    user_num_li.append(user_num)  # appendで修正
+
     print("숫자를 확인합니다!!")
 
     bingo_tf = False
@@ -33,7 +36,7 @@ while bingo_count<3:
             bingo_tf = True
     if all(bingo_all_li[i][i] in user_num_li for i in range(5)):  # 斜め＼
         bingo_tf = True
-    if all(bingo_all_li[i][4-i] in user_num_li for i in range(5)):  # 斜め／
+    if all(bingo_all_li[i][4 - i] in user_num_li for i in range(5)):  # 斜め／
         bingo_tf = True
     if bingo_tf:
         bingo_count += 1
