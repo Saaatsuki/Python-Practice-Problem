@@ -1,5 +1,4 @@
-n = int(input("Enter a number for alternating lines: "))
-
-for _ in range(n):
-    print('* ' * (n - n // 2))
-    print(' *' * (n // 2))
+num = int(input())
+for _ in range(num):
+    print('* '*(num-num//2))
+    print(' *'*(num//2))
