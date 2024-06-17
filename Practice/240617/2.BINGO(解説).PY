@@ -20,10 +20,11 @@ while bingo_count_all < 3:
     bingo_count_reset = 0
     
     user_num = int(input(f"{game_count}시도 - 숫자를 입력 해 주세요 : "))
-    while not (1 <= user_num <= 25):
-        user_num = int(input("1에서 25 사이의 숫자를 입력하세요 : "))
-    while user_num in user_num_li:
-        user_num = int(input("이미 입력한 숫자입니다. 다른 숫자를 입력하세요 :"))
+    while not (1 <= user_num <= 25) and user_num in user_num_li:
+        if 1 <= user_num <= 25 :
+            user_num = int(input("1에서 25 사이의 숫자를 입력하세요 : "))
+        else:
+            user_num = int(input("이미 입력한 숫자입니다. 다른 숫자를 입력하세요 :"))
     user_num_li.append(user_num)  # appendで修正
 
     print("숫자를 확인합니다!!")
