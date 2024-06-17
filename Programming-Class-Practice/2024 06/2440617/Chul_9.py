@@ -1,5 +1,6 @@
 def numberCheck(argList):
     checkNum_li = [2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5]  
+                # [(value % 8) + 2 for value in range(12)]
     mul_res_li = []
     for index in range(12):
         mul_res = int(argList[index]) * checkNum_li[index]
@@ -22,4 +23,3 @@ if numberCheck(country_num_li_all):
     print("유효한 주민번호입니다.")
 else:
     print("유효하지 않은 주민번호입니다.")
-
