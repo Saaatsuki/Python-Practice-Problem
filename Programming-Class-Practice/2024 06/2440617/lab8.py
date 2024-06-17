@@ -4,7 +4,6 @@ def calculate_avarage(*argList):
     for value in argList:
         sum += value
     return sum / len(argList)
-
     # argList_sum = 0
     # [argList_sum:=argList_sum+i for i in argList] 
     # return f"{(argList_sum / len(argList)):.1f}"

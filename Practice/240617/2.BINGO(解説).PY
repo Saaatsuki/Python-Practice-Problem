@@ -10,6 +10,17 @@ for _ in range(5):
         bingo25_li_none.remove(j)
     bingo5X5 = " ".join("{:02}".format(num) for num in bingo_order_li)
     print(bingo5X5)
+# random.randint
+# for _ in range(5):
+#     bingo_order_li = []
+#     while len(bingo_order_li) < 5:
+#         num = random.randint(1, 25)
+#         if num in bingo25_li_none:
+#             bingo_order_li.append(num)
+#             bingo25_li_none.remove(num)
+#     bingo_all_li.append(bingo_order_li)    
+#     bingo5X5 = " ".join("{:02}".format(num) for num in bingo_order_li)
+#     print(bingo5X5)
 
 game_count = 0
 bingo_count_all = 0
