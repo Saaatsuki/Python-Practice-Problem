@@ -56,7 +56,7 @@ while bingo_count_all < 3:
 
     # 縦のチェック（列ごとにチェック）
     for col in range(5):  # 縦
-        # if all(bingo_all_li[line][col] in user_num_li for row in range(5))
+        # if all(bingo_all_li[line][col] in user_num_li for line in range(5))
         #   bingo_count_reset += 1
         col_all_in_user_num_li = True
         for line in range(5):# line:横(行)　col:縦(列)
