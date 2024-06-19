@@ -51,11 +51,11 @@ def triangle():
             print()
 
 while True:
-    print("--------------------")
+    print("-"*20)
     print("1. 구구단 출력")
     print("2. 랜덤값 삼각형 출력")
     print("3. 종료")
-    print("--------------------")
+    print("-"*20)
     user_menu_input = int(input("원하는 메뉴 번호를 입력하세요: "))
     if user_menu_input == 1:
         gugudan()

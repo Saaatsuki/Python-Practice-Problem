@@ -1,5 +1,6 @@
 import random
 
+# 九九の段のプログラム(全体)
 def getGuguAll():
     while True:
         user_num_li = list(map(int,input(f"출력할 구구단을 아래 형식으로 입력하세요(예 : 2 , 2~5)\n").split("~")))
@@ -9,12 +10,14 @@ def getGuguAll():
         else:
             print(f"2~9 사이의 값으로 입력하세요")
 
+# 2から9の値であるかの確認
 def guguCheck(argList):
     for i in argList:
         if not(2<=i<=9):
             return False
     return True
 
+# 九九の計算と出力
 def getGuguCal(argList):
     if len(argList)==1:
         for i in range(1,10):
@@ -25,6 +28,7 @@ def getGuguCal(argList):
             for j in range(1,10):
                 print(f"{i} X {j} = {i*j}")
 
+# 三角プログラム全体
 def getTryAll():
     while True:
         user_num = int(input("삼각형의 높이 줄 수를 입력하세요 (2이상 3이하): "))
@@ -34,6 +38,7 @@ def getTryAll():
         else:
             print("2 또는 3을 입력하세요")
 
+# 三角の出力
 def getTryResult(argNum):
     com_num_li = getTryRandom(argNum)
     index = 0
@@ -42,16 +47,18 @@ def getTryResult(argNum):
         print(f"{' '*(argNum-i)}{number_string}")
         index += i
 
-
+# ランダムで数字を出力
 def getTryRandom(argNum):
     num_k = argNum * (argNum + 1) // 2
     return random.sample(range(1, 10), num_k)
 
-print("--------------------")
+
+# プログラム開始
+print("-"*20)
 print("1) 구구단 출력")
 print("2) 랜덤값 삼각형 출력")
 print("3) 종료")
-print("--------------------")
+print("-"*20)
 
 while True:
     menu_num = int(input("원하는 메뉴 번호를 입력하세요 : "))
