@@ -1,53 +1,92 @@
+
 import random
 
-menu_num = 0
-while menu_num != 3:
-    menu_num = int(input("------------------\n1.구구단 출력\n2.랜덤값 삼각형 출력\n3.종료\n------------------\n원하는 메뉴 번호를 입력하세요 : "))
-    while not 1 <= menu_num <= 3:
-        menu_num = int(input("1 or 2 or 3 부터 선택해주세요\n------------------\n1.구구단 출력\n2.랜덤값 삼각형 출력\n3.종료\n------------------\n원하는 메뉴 번호를 입력하세요 : "))
-    if menu_num == 1:
-        in29_tf = False
-        while not in29_tf:
-            gugu_user = input(f"출력할 구구단을 아래 형식으로 입력하세요 (에:2,2~5)\n")
-            gugu_error_msg = f"2~9사이의 값을 입력하세요"
-            if "~" in gugu_user:
-                argNum = list(map(int, gugu_user.split("~")))
-                if len(argNum) == 2 and 2 <= argNum[0] <= 9 and 2 <= argNum[1] <= 9 and argNum[0] <= argNum[1]:
-                    for i in range(argNum[0], argNum[1] + 1):
-                        print()
-                        for j in range(1, 10):
-                            print(f"{i} X {j} = {i*j}")
-                    in29_tf = True
-                else:
-                    print(gugu_error_msg)
-            else:
-                gugu_num = int(gugu_user)
-                if 2 <= gugu_num <= 9:
-                    for i in range(1, 10):                
-                        print(f"{gugu_num} X {i} = {gugu_num * i}")
-                    in29_tf = True
-                else:
-                    print(gugu_error_msg)
 
-    elif menu_num == 2:
-        tri_user = int(input(f"삼각형의 높이 줄 수를 입력하세요 (2 또는 3): "))
-        while not 2 <= tri_user <= 3:
-            tri_user = int(input(f"2 또는 3를 입력하세요: "))
-
-        tri_com_li = []
-        required_length = 3 if tri_user == 2 else 6
-        while len(tri_com_li) < required_length:
-            com_num = random.randint(0, 9)
-            if com_num not in tri_com_li:
-                tri_com_li.append(com_num)
-        # if tri_user == 2:
-        #     print(f" {tri_com_li[0]}\n{tri_com_li[1]}{tri_com_li[2]}")
-        # else:
-        #     print(f"  {tri_com_li[0]}\n {tri_com_li[1]}{tri_com_li[2]}\n{tri_com_li[3]}{tri_com_li[4]}{tri_com_li[5]}")
-        index = 0
-        for i in range(1, tri_user + 1):
-            print(" " * (tri_user - i) + "".join(map(str, tri_com_li[index:index + i])))
-            index += i
+def print_menu():
+    width = 15
+    print("-" * width)
+    print("1. 구구단 출력")
+    print("2. 삼각형 출력")
+    print("3. 종료")
+    print("-" * width)
     
-    else:
-        print("프로그램을 종료합니다.")
+def is_valid_num(arg_start, arg_end, *args):
+    
+    for value in args:
+        if not (arg_start <= value <= arg_end):
+            return False
+            
+    return True
+
+def print_mul_table():
+    
+    while True:
+        input_value = input("출력할 단을 입력하세요: ")
+        
+        input_list = input_value.split("~")
+        input_list = [int(value) for value in input_list]
+            
+        if is_valid_num(2, 9, *input_list):
+            break
+            
+        print("2~9 정수를 입력 하세요")
+              
+    
+    # 구구단을 출력
+    start = input_list[0]
+    end = input_list[1] if len(input_list) > 1 else input_list[0]
+    
+    for dan in range(start, end + 1):
+        for num in range(1, 10):
+            print(f"{dan} X {num} = {dan * num}")
+        print()
+        
+def print_triangle():
+    
+    while True:
+        row_num = int(input("삼각형의 높이를 입력하세요: "))
+        
+        if is_valid_num(2, 3, row_num):
+            break
+        
+        print("2~3 값을 입력 하세요")
+    
+    # rand_list = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    rand_list = [value for value in range(10)]
+    
+    for rnum in range(row_num):
+        # 공백 출력
+        print(" " * (row_num - rnum - 1), end="")
+         
+        # 난수 값 출력
+        for _ in range(rnum + 1):
+            rand_num = rand_list[random.randint(0, len(rand_list) - 1)]
+            rand_list.remove(rand_num)
+            
+            print(rand_num, end="")
+            
+        # 개행 문자
+        print()
+    
+    
+while True:
+
+    # 메뉴 출력
+    print_menu()
+
+    input_value = int(input("메뉴를 선택 해주세요: "))
+
+    if not (1 <= input_value <= 3):
+        print("1~3 정수를 입력하세요")
+        continue
+    
+    # 1. 구구단 실행
+    if input_value == 1:
+        print_mul_table()
+    # 2. 삼각형 출력
+    elif input_value == 2:
+        print_triangle()
+    # 3. 종료
+    elif input_value == 3:
+        print("종료")
+        break
