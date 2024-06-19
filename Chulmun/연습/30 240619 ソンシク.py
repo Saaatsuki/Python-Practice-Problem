@@ -1,53 +1,94 @@
-import random
+# 매뉴 출력 (1 ~ 3) 이외의 값이 들어올 경우 에러 메시지 출력 후 재입력 요구
+def menu():
+    while True:
+        print("--------------------")
+        print("1. 구구단 출력")
+        print("2. 랜덤값 삼각형 출력")
+        print("3. 종료")
+        print("--------------------")
+        user_menu_input = int(input("원하는 메뉴 번호를 입력하세요: "))
+        if user_menu_input == 1:
+            gugudan()
+        elif user_menu_input == 2:
+            triangle()
+        elif user_menu_input == 3:
+            print("프로그램을 종료합니다.")
+            break
+        else:
+            print("1~3 사이의 값을 입력하세요")
 
-menu_num = 0
-while menu_num != 3:
-    menu_num = int(input("------------------\n1.구구단 출력\n2.랜덤값 삼각형 출력\n3.종료\n------------------\n원하는 메뉴 번호를 입력하세요 : "))
-    while not 1 <= menu_num <= 3:
-        menu_num = int(input("1 or 2 or 3 부터 선택해주세요\n------------------\n1.구구단 출력\n2.랜덤값 삼각형 출력\n3.종료\n------------------\n원하는 메뉴 번호를 입력하세요 : "))
-    if menu_num == 1:
-        in29_tf = False
-        while not in29_tf:
-            gugu_user = input(f"출력할 구구단을 아래 형식으로 입력하세요 (에:2,2~5)\n")
-            gugu_error_msg = f"2~9사이의 값을 입력하세요"
-            if "~" in gugu_user:
-                argNum = list(map(int, gugu_user.split("~")))
-                if len(argNum) == 2 and 2 <= argNum[0] <= 9 and 2 <= argNum[1] <= 9 and argNum[0] <= argNum[1]:
-                    for i in range(argNum[0], argNum[1] + 1):
-                        print()
-                        for j in range(1, 10):
-                            print(f"{i} X {j} = {i*j}")
-                    in29_tf = True
-                else:
-                    print(gugu_error_msg)
+# 1. 구구단 출력 (2 ~ 9) 이외의 값이 들어올 경우 에러 메시지 출력 후 재입력 요구
+def gugudan():
+    # 입력값이 ~이 포함이 되어있나 안되어있나 구분
+    while True:
+        while True:
+            user_input =input("출력할 구구단을 아래 형식으로 입력하세요 (예: 2, 2~5)\n")
+            user_input_list = []
+            for i in user_input:
+                if i != "~":
+                    i = int(i)
+                    user_input_list.append(i)
+                    
+            if len(user_input_list) <= 3 and 1 not in user_input_list:
+                break
             else:
-                gugu_num = int(gugu_user)
-                if 2 <= gugu_num <= 9:
-                    for i in range(1, 10):                
-                        print(f"{gugu_num} X {i} = {gugu_num * i}")
-                    in29_tf = True
-                else:
-                    print(gugu_error_msg)
-
-    elif menu_num == 2:
-        tri_user = int(input(f"삼각형의 높이 줄 수를 입력하세요 (2 또는 3): "))
-        while not 2 <= tri_user <= 3:
-            tri_user = int(input(f"2 또는 3를 입력하세요: "))
-
-        tri_com_li = []
-        required_length = 3 if tri_user == 2 else 6
-        while len(tri_com_li) < required_length:
-            com_num = random.randint(0, 9)
-            if com_num not in tri_com_li:
-                tri_com_li.append(com_num)
-        # if tri_user == 2:
-        #     print(f" {tri_com_li[0]}\n{tri_com_li[1]}{tri_com_li[2]}")
-        # else:
-        #     print(f"  {tri_com_li[0]}\n {tri_com_li[1]}{tri_com_li[2]}\n{tri_com_li[3]}{tri_com_li[4]}{tri_com_li[5]}")
-        index = 0
-        for i in range(1, tri_user + 1):
-            print(" " * (tri_user - i) + "".join(map(str, tri_com_li[index:index + i])))
-            index += i
+                print("2~9 사이의 값으로 입력하세요")                
+       
     
-    else:
-        print("프로그램을 종료합니다.")
+        # ~이 없을때
+        if len(user_input_list) == 1:
+            for i in user_input_list:
+                for j in range(1, 10):
+                    print(f"{i} * {j} = {i * j}")
+        
+        # ~이 있을때
+        elif len(user_input_list) == 2:
+            i, j = user_input_list
+            for a in range(i, j+1):
+                for b in range(1, 10):
+                    print(f"{a} * {b} = {a * b}")
+                print("")
+        break
+
+# 2. 랜덤값 삼각형 출력
+def triangle():
+    import random
+    # 사용자로부터 삼각형 높이(2~3줄)을 입력 받음
+    while True:
+        high = int(input("삼각형의 높이 줄 수를 입력하세요(2 이상 3이하)\n"))
+        
+        # 2~3줄 일때
+        if 2 <= high <= 3:
+            break
+
+        # 아닐때
+        print("2 또는 3을 입력하세요")
+    
+    # 높이 2
+    if high == 2:
+        alist = []
+        count = 0
+        while count < 3:
+            a = random.randint(1, 9)
+            if a not in alist:
+                alist.append(a)
+                count += 1
+
+        print(f"{" "}{alist[0]}")
+        print(f"{alist[1]}{alist[2]}")
+                
+    # 높이 3
+    elif high == 3:
+        alist = []
+        count = 0
+        while count < 7:
+            a = random.randint(1, 9)
+            if a not in alist:
+                alist.append(a)
+                count += 1
+            
+        print(f"{" "}{" "}{alist[0]}")
+        print(f"{" "}{alist[1]}{alist[2]}")
+        print(f"{alist[3]}{alist[4]}{alist[5]}")
+                        
+menu()
