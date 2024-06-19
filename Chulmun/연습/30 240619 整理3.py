@@ -53,8 +53,8 @@ print("2) 랜덤값 삼각형 출력")
 print("3) 종료")
 print("--------------------")
 
-menu_num = int(input("원하는 메뉴 번호를 입력하세요 : "))
 while True:
+    menu_num = int(input("원하는 메뉴 번호를 입력하세요 : "))
     if menu_num == 1:
         getGuguAll()
     elif menu_num == 2:

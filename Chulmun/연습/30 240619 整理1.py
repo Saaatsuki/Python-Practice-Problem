@@ -28,9 +28,12 @@ def gugudan():
             print("잘못된 형식입니다. 다시 입력하세요.")
 
 def triangle():
-    height = int(input("삼각형의 높이 줄 수를 입력하세요 (2 또는 3): "))
-    while not height == 2 or height == 3:
-        print("2 또는 3을 입력하세요")
+    while True:
+        height = int(input("삼각형의 높이 줄 수를 입력하세요 (2 또는 3): "))
+        if height == 2 or height == 3:
+            break
+        else:
+            print("2 또는 3을 입력하세요")
 
     if height == 2:
         triangle_data = [random.randint(1, 9) for _ in range(3)]
