@@ -2,6 +2,11 @@ import random
 
 def guguCheck(guguList):
     return all(2 <= x <= 9 for x in guguList)
+# def guguCheck(guguList):
+#     for x in guguList:
+#         if not (2 <= x <= 9):
+#             return False
+#     return True
 
 def guguCal(argList):
     if len(argList) == 1:
@@ -17,7 +22,7 @@ def getTri(argNum):
     tri_li = triRandom(argNum)
     index = 0
     for i in range(1, argNum + 1):
-        num_str = " ".join(map(str, tri_li[index:index + i]))
+        num_str = "".join(map(str, tri_li[index:index + i]))
         print(f"{' ' * (argNum - i)}{num_str}")
         index += i
 
