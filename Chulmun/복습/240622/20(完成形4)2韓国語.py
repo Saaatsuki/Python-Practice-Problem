@@ -24,7 +24,7 @@ while True:
 
     if menu == 1:
         while True:
-            gugu = input("出力したい九九の段を入力してください\n")
+            gugu = input("출력하고 싶은 구구단 단수를 입력하세요\n")
             if "~" in gugu:
                 start, end = map(int, gugu.split("~"))
                 gugu_li = list(range(start, end + 1))
@@ -34,11 +34,11 @@ while True:
                 guguCal(gugu_li)
                 break
             else:
-                print("2~9の数字を入力してください")
+                print("2~9 사이의 숫자를 입력하세요")
 
     elif menu == 2:
         while True:
-            high = int(input("何段ピラミットにしますか\n"))
+            high = int(input("몇 단 삼각형을 만드시겠습니까?\n"))
             if high == 2 or high == 3:
                 li1 = piramittoRandom(high)
                 index = 0
@@ -49,11 +49,11 @@ while True:
                     index += i
                 break
             else:
-                print("2または3の数字を入力してください")
+                print("2 또는 3을 입력하세요")
 
     elif menu == 3:
-        print("プログラムを終了します")
+        print("프로그램을 종료합니다")
         break
 
     else:
-        print("1~3のメニューから選択してください")
+        print("1~3 사이의 메뉴 번호를 선택하세요")
