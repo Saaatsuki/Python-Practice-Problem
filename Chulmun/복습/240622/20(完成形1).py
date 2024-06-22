@@ -21,15 +21,15 @@ def guguCal(argList):
 def getTri(argNum):
     tri_li = triRandom(argNum)
     index = 0
-    # for i in range(1, argNum + 1):
-    #     num_str = "".join(map(str, tri_li[index:index + i]))
-    #     print(f"{' ' * (argNum - i)}{num_str}")
-    #     index += i
-    for i in range(1,argNum+1):
-        li = tri_li[index:index + i]
-        num_str = ''.join(f"{num:02d}" for num in li)
+    for i in range(1, argNum + 1):
+        num_str = "".join(map(str, tri_li[index:index + i]))
         print(f"{' ' * (argNum - i)}{num_str}")
-        index += 1
+        index += i
+    # for i in range(1,argNum+1):
+    #     li = tri_li[index:index + i]
+    #     num_str = ''.join(f"{num:02d}" for num in li)
+    #     print(f"{' ' * (argNum - i)}{num_str}")
+    #     index += 1
 def triRandom(argNum):
     num_k = argNum * (argNum + 1) // 2
     return random.sample(range(1, num_k + 1), num_k)
