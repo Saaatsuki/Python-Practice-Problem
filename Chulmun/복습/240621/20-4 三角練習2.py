@@ -13,3 +13,9 @@ for i in range(1, tri + 1):
     ram_str = ''.join(f"{num:01d}" for num in current_level)
     print(f"{' ' * (tri - i)}{ram_str}")
     index += i
+# tri_li = triRandom(argNum)
+# index = 0
+# for i in range(1, argNum + 1):
+#     num_str = "".join(map(str, tri_li[index:index + i]))
+#     print(f"{' ' * (argNum - i)}{num_str}")
+#     index += i
