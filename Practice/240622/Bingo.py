@@ -23,11 +23,13 @@ while bingo_count_all < 3:
         user_num = int(input(f"{game_count}번째: 1에서 25 사이의 숫자를 입력하세요: "))
 
     found = False
-    for list_idx in range(5):
-        if user_num in bingo5X5[list_idx]:
-            num_idx = bingo5X5[list_idx].index(user_num)
-            bingo5X5[list_idx][num_idx] = 0
-            found = True
+    for list in range(len(bingo5X5)):# len(bingo5X5)＝5
+        for num in range(len(bingo5X5[list])):# len(bingo5X5[list])＝5
+            if bingo5X5[list][num] == user_num:
+                bingo5X5[list][num] = 0
+                found = True
+                break
+        if found:
             break
 
     for list_idx in range(5):
@@ -48,6 +50,6 @@ while bingo_count_all < 3:
         print("BINGOOO!!")
 
     bingo_count_all = bingo_count_reset
-    print(f"현재까지의 빙고 : {bingo_count_all}")
+    print(f"현재까지의 빙고 : {bingo_count_all}\n")
 
 print(f"\n3개 빙고!! 시도 횟수 : {game_count}")
