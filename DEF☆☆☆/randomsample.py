@@ -1,46 +1,47 @@
 import random
 
-def getRandomSample(population, 個数):
-    if 個数 > len(population):
-        raise ValueError("Sample size cannot be larger than population size")
+def getRandomSample1(argSequence, argK):
+    # もしシーケンスの長さが抽出する要素の個数より小さい場合、エラーを発生させる
+    if len(argSequence) < argK:
+        raise ValueError("シーケンスよりも個数が大きいため実行できません")
     
-    sample = []
-    population_copy = list(population)  # 元のリストを変更しないためにコピーを作成
+    # 空のリストを準備し、シーケンスのコピーを作成する
+    sample_li = []
+    argSequence_li = list(argSequence)
     
-    for _ in range(個数):
-        index = random.randint(0, len(population_copy) - 1)
-        sample.append(population_copy.pop(index))
-
-    return sample
-
-# テスト用の例
-if __name__ == "__main__":
-    population = [1, 2, 3, 4, 5]
-    k = 3
-    print(getRandomSample(population, k))  # 例: [4, 1, 5]
-
-
-def getRandomSample(population, 個数):
-    if 個数 > len(population):
-        raise ValueError("Sample size cannot be larger than population size")
+    # 指定された個数だけ要素を抽出するループ
+    for _ in range(argK):
+        # ランダムにインデックスを選び、その要素を抽出してsample_liに追加する
+        index = random.randint(0, len(argSequence_li) - 1)
+        sample_li.append(argSequence_li.pop(index))
     
-    sample = []
-    population_copy = list(population)  # 元のリストを変更しないためにコピーを作成
-    
-    while len(sample) < 個数:
-        index = random.randint(0, len(population_copy) - 1)
-        selected_element = population_copy[index]
+    # 抽出した要素が入ったリストを返す
+    return sample_li
+
+
+import random
+
+def getRandomSample2(argSequence, argK):
+    # もしシーケンスの長さが抽出する要素の個数より小さい場合、エラーを発生させる
+    if len(argSequence) < argK:
+        raise ValueError("シーケンスよりも個数が大きいため実行できません")   
+
+    # 空のリストを準備し、シーケンスのコピーを作成する
+    sample_li = []
+    argSequence_li = list(argSequence)
+
+    # 指定された個数だけ重複しない要素を抽出するループ
+    while len(sample_li) < argK:
+        # ランダムにインデックスを選び、その要素を取得する
+        index = random.randint(0, len(argSequence_li) - 1)
+        random_sel = argSequence_li[index]
+
+        # もし選ばれた要素がまだsample_liに含まれていなければ、sample_liに追加する
+        if random_sel not in sample_li:
+            sample_li.append(random_sel)
         
-        # 選ばれた要素がすでにサンプルに含まれていないかを確認
-        if selected_element not in sample:
-            sample.append(selected_element)
-        
-        # 選ばれた要素を元のリストから削除
-        population_copy.remove(selected_element)
-    
-    return sample
+        # 抽出した要素を元のシーケンスから削除する
+        argSequence_li.remove(random_sel)
 
-# テスト用の例
-if __name__ == "__main__":
-    population = [1, 2, 3, 4, 5]
-    k = 3
+    # 抽出した要素が入ったリストを返す
+    return sample_li
