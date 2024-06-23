@@ -73,7 +73,7 @@ for alp in sent_alp_li:
 alp_count_all = getlen(sent_alp_li)
 alp_count = alp_count_all - (enter_count + space_count)
 
-print(f"\n入力された単語の数：{word_count}")
+print(f"入力された単語の数：{word_count}")
 print(f"入力された単語の位置：{word_index_li}")
 print(f"全体の単語の数：{all_word_count}")
 print(f"全体の文字の数：{alp_count}")

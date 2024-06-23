@@ -53,7 +53,6 @@ for word in sent_word_li:
 # 入力された単語のIndexの値
 word_index_li = []
 for index in word_index_li:
-    # 単語の位置を計算する
     position = sum(len(word) + 1 for word in sent_word_li[:index])
     word_index_li.append(position)
 

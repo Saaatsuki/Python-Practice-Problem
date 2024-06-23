@@ -6,6 +6,10 @@ test test pos"""
 sentence_alp = [alp_com for alp_com in sentence]
 print(sentence_alp)
 
+sentence_li = []
+for alp in range(len(sentence_alp)):
+    if alp==" ":
+        sentence_li.append()
 
 
 sentence_word = ["pos","pos","hello","bar","foo","bar","foo","pos","kin","pos","test","test","pos"]
