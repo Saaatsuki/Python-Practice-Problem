@@ -17,5 +17,5 @@ def getSplit(argSentence, argSplit):
 
 # 使用例:
 sent = input("文章を入力してください：")
-result = getSplit(sent, ",")
+result = getSplit(sent, " ")
 print(result)
