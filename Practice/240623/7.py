@@ -9,8 +9,9 @@ def getSplit(argSentence, argSplit):
             if word:
                 word_li.append(word)
                 word = ""
-    
-    if word: 
+
+    if word:
         word_li.append(word)
-    
+
     return word_li
+
