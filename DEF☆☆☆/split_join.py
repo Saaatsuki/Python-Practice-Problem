@@ -53,8 +53,8 @@ print(getSplit2(sentence2, split_li))
 
 
 
-# join() → def getjoin()
-def getjoin(argList, separator):
+# join() → def getJoin()
+def getJoin(argList, separator):
     result = ""
     index = 0
     while index < len(argList):
@@ -68,7 +68,7 @@ def getjoin(argList, separator):
 txt_list = input("文字列リストをスペースで区切って入力してください: ").split()
 
 # 自作のjoin関数を使用してリストの文字列を連結
-joined_string = getjoin(txt_list, " ")
+joined_string = getJoin(txt_list, " ")
 
 # 結果を出力
 print("連結された文字列:", joined_string)
