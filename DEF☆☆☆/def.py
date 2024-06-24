@@ -14,6 +14,15 @@ def getLen(sequence):
         count += 1
     return count
 
+# count → def getCount()
+def getCount(lst, value):
+    count = 0  # カウントの初期化
+    # リスト内の各要素を走査
+    for item in lst:
+        if item == value:  # 要素が指定された値と一致する場合
+            count += 1  # カウントを増やす
+    return count
+
 # sum → def getSum()
 def getSum(numbers):
     total = 0
@@ -35,6 +44,30 @@ def getAll(iterable):
         if not elem:
             return False
     return True
+
+# pop() → def getPop()
+def getPop(lst):
+    if not lst:  # リストが空の場合はエラーを出す
+        raise IndexError("pop from empty list")
+
+    last_element = lst[-1]  # 最後の要素を取得
+    new_lst = []  # 新しいリストを作成
+
+    # 最後の要素以外を新しいリストに追加
+    for i in range(len(lst) - 1):
+        new_lst.append(lst[i])
+    
+    # 元のリストをクリアして、新しいリストの要素を元のリストに追加
+    while len(lst) > 0:
+        lst.remove(lst[0])
+    
+    for item in new_lst:
+        lst.append(item)
+
+    return last_element
+
+
+
 
 
 # テスト用の例
