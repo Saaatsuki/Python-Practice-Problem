@@ -41,7 +41,7 @@ def getSplit(argTxt, argSep):
         word_li.append(word)
     return word_li
 
-com_num_li = randomSample([num for num in range(1,10)], 3)
+com_num_li = randomSample([num for num in range()], 3)
 
 game_count = 0
 strike = 0
