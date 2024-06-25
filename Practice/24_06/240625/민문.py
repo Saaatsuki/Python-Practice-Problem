@@ -20,8 +20,7 @@ def getSplit(argTxt,argSep):
 
 def Fevonach(argLen):
     fevo_li = [1,1]
-    index = 2
-    for _ in range(argLen):
+    for index in range(2,argLen):
         num = fevo_li[index-2] + fevo_li[index-1]
         index += 1
         fevo_li.append(num)
