@@ -17,7 +17,7 @@ def get_sum(num_list):
     return total_sum
 
 # 入力文字列
-input_string = """   pos pos hello  bar
+input_string = """pos pos hello  bar
 foo bar foo pos kin pos
 test test pos"""
 
