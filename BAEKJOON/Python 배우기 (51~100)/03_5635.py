@@ -9,7 +9,7 @@ for _ in range(game_count):
     name,str_day,str_mon,str_year = input().split()
     day = int(str_day)
     mon = int(str_mon)
-    year = int(str_year)
+    year = int(str_year) 
 
     year_li.append(year)
     mon_li.append(mon)
