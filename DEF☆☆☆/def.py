@@ -75,6 +75,14 @@ def getIndex(string, char):
     return -1
 
 
+def sort_list_max_remove(lst):
+    sorted_list = []
+    while lst:
+        max_elem = max(lst)
+        sorted_list.append(max_elem)
+        lst.remove(max_elem)
+    return sorted_list
+
 
 
 # テスト用の例
