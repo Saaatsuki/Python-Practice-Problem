@@ -1,3 +1,5 @@
+from prettytable import PrettyTable
+
 kokugo_li = []
 eng_li = []
 math_li = []
@@ -8,7 +10,7 @@ test_avg_li = []
 while True:
     print(f"\n{'='*25}")
     print(" 1. 학생 성적 입력")
-    print(" 2. 학생 목록 출력 (입력 순)")
+    print(" 2. 학생 목록 출력 (학번 순)")
     print(" 3. 프로그램 종료")
     print(f"\n 현재 입력된 데이터 수 : {len(kokugo_li)}")
 
@@ -48,8 +50,17 @@ while True:
         if len(kokugo_li) == 0:
             print("입력된 데이터가 없습니다.")
         else:
-            for i in range(len(kokugo_li)):
-                print(f" ID : {stu_num_li[i]:02d}  이름 : {name_li[i]}  국어 : {kokugo_li[i]:3d}  영어 : {eng_li[i]:3d}  수학 : {math_li[i]:03d}  평균 : {test_avg_li[i]:.2f}")
+            sorted_students = sorted(zip(stu_num_li, name_li, kokugo_li, eng_li, math_li, test_avg_li))
+            
+            # PrettyTableインスタンスを作成
+            table = PrettyTable(["학번", "이름", "국어", "영어", "수학", "평균"])
+            
+            # ソートされたデータでテーブルを作成
+            for idx, (stu_num, name, kokugo, eng, math, test_avg) in enumerate(sorted_students, start=1):
+                table.add_row([f"{stu_num:02d}", name, kokugo, eng, math, f"{test_avg:.2f}"])
+            
+            # テーブルを表示
+            print(table)
 
     elif menu == 3:
         print("프로그램 종료")
