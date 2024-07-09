@@ -55,11 +55,11 @@ while menu != 4:
     elif menu == 2:
         ranks = rank_elements(test_sum_file)
         print("[학생 성적 목록]")
-        print("{:<12} {:<5} {:<5} {:<5} {:<5} {:<7} {:<5}".format("이름", "국어", "영어", "수학", "총점", "평균", "등수"))
+        print("{:<12} {:<5} {:<5} {:<5} {:<5} {:<7} {:<10}".format("이름", "국어", "영어", "수학", "총점", "평균", "등수"))
         for i in range(len(student_file_name)):
-            print("{:<12} {:<5} {:<5} {:<5} {:<5} {:<7.2f} {:<5}".format(student_file_name[i], student_file_kokugo[i], student_file_eng[i], student_file_math[i], test_sum_file[i], test_avg_file[i], ranks[i]))
+            print("{:<12} {:<5} {:<5} {:<5} {:<5} {:<7.2f} {:<10}".format(student_file_name[i], student_file_kokugo[i], student_file_eng[i], student_file_math[i], test_sum_file[i], test_avg_file[i], ranks[i]))
 
     elif menu == 3:
         ranks = rank_elements(test_sum_file)
         for i in range(len(student_file_name)):
-            print("{:<12} {:<5} {:<5} {:<5} {:<5} {:<7.2f} {:<5}".format(student_file_name[i], student_file_kokugo[i], student_file_eng[i], student_file_math[i], test_sum_file[i], test_avg_file[i], ranks[i]))
+            print("{:<12} {:<5} {:<5} {:<5} {:<5} {:<7.2f} {:<10}".format(student_file_name[i], student_file_kokugo[i], student_file_eng[i], student_file_math[i], test_sum_file[i], test_avg_file[i], ranks[i]))
