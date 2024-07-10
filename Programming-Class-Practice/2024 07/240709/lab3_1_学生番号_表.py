@@ -54,7 +54,7 @@ while True:
             
             # PrettyTableインスタンスを作成
             table = PrettyTable(["학번", "이름", "국어", "영어", "수학", "평균"])
-            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
             # ソートされたデータでテーブルを作成
             for idx, (stu_num, name, kokugo, eng, math, test_avg) in enumerate(sorted_students, start=1):
                 table.add_row([f"{stu_num:02d}", name, kokugo, eng, math, f"{test_avg:.2f}"])
