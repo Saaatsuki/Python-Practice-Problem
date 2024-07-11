@@ -8,7 +8,7 @@ name_li = []
 test_avg_li = []
 
 while True:
-    print(f"\n{'='*25}")
+    print(f"\n{'='*30}")
     print(" 1. 학생 성적 입력")
     print(" 2. 학생 목록 출력 (학번 순)")
     print(" 3. 프로그램 종료")
@@ -19,7 +19,7 @@ while True:
     else:
         all_avg = 0
     print(f" 잔류 학생 평균 점수 : {all_avg:.2f}")
-    print("="*25)
+    print("="*30)
 
     menu = int(input("메뉴를 선택하세요\n"))
     while not 1 <= menu <= 3:
