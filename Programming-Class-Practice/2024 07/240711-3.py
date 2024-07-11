@@ -38,4 +38,22 @@ with open('2024_std_num_high_school.csv', newline='', encoding='utf-8') as f:
 top5_schools = sorted(school_li, key=lambda x: x['전채 학생 수'], reverse=True)[:5]
 table = PrettyTable()
 
-table.field_names = ['학교명', '전채 학생 수', '1학년 전채 학생 수', '1학년(남)', '1학년(여)', '1학년 여자 비율', '2학
+table.field_names = ['학교명', '전채 학생 수', '1학년 전채 학생 수', '1학년(남)', '1학년(여)', '1학년 여자 비율', '2학년(남)', '2학년(여)', '2학년 여자 비율', '3학년(남)', '3학년(여)', '3학년 여자 비율']
+
+for school in top5_schools:
+    table.add_row([
+        school['학교명'],
+        f"{school['전채 학생 수']:,}",
+        school['1학년 전채 학생 수'],
+        school['1학년(남)'],
+        school['1학년(여)'],
+        f"{school['1학년 여자 비율']:.2f}",
+        school['2학년(남)'],
+        school['2학년(여)'],
+        f"{school['2학년 여자 비율']:.2f}",
+        school['3학년(남)'],
+        school['3학년(여)'],
+        f"{school['3학년 여자 비율']:.2f}"
+    ])
+
+print(table)
