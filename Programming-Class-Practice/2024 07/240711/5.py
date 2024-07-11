@@ -1,10 +1,10 @@
 from prettytable import PrettyTable
 
-data_di = {
-    "name": None,
-    "age": None,
-    "city": None
-}
+# data_di = {
+#     "name": None,
+#     "age": None,
+#     "city": None
+# }
 
 data_li = []
 
