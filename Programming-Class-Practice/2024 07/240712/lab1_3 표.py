@@ -1,4 +1,5 @@
 import csv
+from prettytable import PrettyTable
 
 with open('2024_std_num_high_school.csv' , newline='' , encoding='utf-8-sig') as f :
     reader = csv.DictReader(f)
@@ -38,6 +39,14 @@ with open('2024_std_num_high_school.csv' , newline='' , encoding='utf-8-sig') as
     girl_p = girl_sum_all / all_sum * 100
 
     print(f"전채 고등학생 수 : {(all_sum):,} 명, 남학생 수 : {(boy_sum_all):,} 명, 여학생 수 : {(girl_sum_all)} 명, 남학생 비율 : {(boy_p):.2f} % , 여학생 비율 : {(girl_p):.2f} %")
-    print(f"1학년 - 남학생 수 : {(boy_sum_1):,} 명, 여학생 수 : {(girl_sum_1):,} 명, 남학생 비율 : {(boy_p_1):.2f} % , 여학생 비율 : {(girl_p_1):.2f} %")
-    print(f"2학년 - 남학생 수 : {(boy_sum_2):,} 명, 여학생 수 : {(girl_sum_2):,} 명, 남학생 비율 : {(boy_p_2):.2f} % , 여학생 비율 : {(girl_p_2):.2f} %")
-    print(f"3학년 - 남학생 수 : {(boy_sum_3):,} 명, 여학생 수 : {(girl_sum_3):,} 명, 남학생 비율 : {(boy_p_3):.2f} % , 여학생 비율 : {(girl_p_3):.2f} %")
+
+    table = PrettyTable(["학년" , "남학생 수" , "여학생 수" , "남학생 비율" , "여학생 비율"])
+    table.add_row([f"{(boy_sum_1):,} 명" , f"{(girl_sum_1):,} 명" , f"{(boy_p_1):.2f} %" , f"여학생 비율 : {(girl_p_1):.2f} %"
+    ])
+    print(table)
+
+
+
+    # print(f"1학년 - 남학생 수 : {(boy_sum_1):,} 명, 여학생 수 : {(girl_sum_1):,} 명, 남학생 비율 : {(boy_p_1):.2f} % , 여학생 비율 : {(girl_p_1):.2f} %")
+    # print(f"2학년 - 남학생 수 : {(boy_sum_2):,} 명, 여학생 수 : {(girl_sum_2):,} 명, 남학생 비율 : {(boy_p_2):.2f} % , 여학생 비율 : {(girl_p_2):.2f} %")
+    # print(f"3학년 - 남학생 수 : {(boy_sum_3):,} 명, 여학생 수 : {(girl_sum_3):,} 명, 남학생 비율 : {(boy_p_3):.2f} % , 여학생 비율 : {(girl_p_3):.2f} %")
