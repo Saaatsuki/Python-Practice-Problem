@@ -13,6 +13,10 @@ with open('2024_std_num_high_school.csv' , newline='',encoding='utf-8-sig') as f
 
     for row in reader:
         if row["제외여부"]=="N":
+        # for i in range(1, 4):
+        #     if row["제외여부"]=="N":
+        #         all_boy_sum += int(row[f"{i}학년(남)"])
+        #         all_girl_sum += int(row[f"{i}학년(여)"])            
             boy_sum_1 += int(row['1학년(남)'])
             boy_sum_2 += int(row['2학년(남)'])
             boy_sum_3 += int(row['3학년(남)'])
