@@ -1,5 +1,4 @@
-num = int(input())
+cou = int(input())
 
-for _ in range(num):
-
-    
+for _ in range(cou):
+    num = int(input())

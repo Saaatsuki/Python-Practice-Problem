@@ -19,6 +19,6 @@ while running:
     screen.fill((0,0,0))
     pygame.display.flip()
     clock.tick(60)
-
+    
 # 종료
 pygame.quit()
