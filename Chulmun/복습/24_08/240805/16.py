@@ -32,8 +32,8 @@ while strike < 3 and out < 3 and game_count < 5:
     if strike == 0 and ball == 0:
         out += 1
 
-    print(f"결과 : {strike} Strike, {ball} Ball, {out} Out")
+    print(f"\n결과 : {strike} Strike, {ball} Ball, {out} Out")
 
 msg = "패배" if game_count >= 5 or out >= 3 else "승리"
-print(f"게임 종료 : {msg}")
+print(f"\n\n게임 종료 : {msg}")
 print(f"정답 : {' '.join(map(str, com_num_li))}")
