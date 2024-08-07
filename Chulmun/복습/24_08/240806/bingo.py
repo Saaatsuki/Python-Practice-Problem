@@ -1,9 +1,9 @@
 import random
 
-def output_bingo(argList, masu):
-    for i in range(masu):
-        for j in range(masu):
-            print(f"{argList[i * masu + j]:2}", end=" ")
+def output_bingo(argList, size):
+    for i in range(size):
+        for j in range(size):
+            print(f"{argList[i * size + j]:2}", end=" ")
         print()
 
 def count_bingos(bingo_list, size):
@@ -24,11 +24,11 @@ def count_bingos(bingo_list, size):
 
     return bingos
 
-masu = int(input("3~6의 숫자를 입력해주세요 : "))
-while not 3 <= masu <= 6:
-    masu = int(input("3~6의 숫자를 입력해주세요 : "))
+size = int(input("3~6의 숫자를 입력해주세요 : "))
+while not 3 <= size <= 6:
+    size = int(input("3~6의 숫자를 입력해주세요 : "))
 
-bingo_num_li_len = masu * masu
+bingo_num_li_len = size * size
 bingo_num_li = []
 
 while len(bingo_num_li) < bingo_num_li_len:
@@ -37,7 +37,7 @@ while len(bingo_num_li) < bingo_num_li_len:
         bingo_num_li.append(bingo_num)
 
 print("\n👾BINGO👾")
-output_bingo(bingo_num_li, masu)
+output_bingo(bingo_num_li, size)
 
 bingo_cou = 0
 while bingo_cou < 3:
@@ -47,9 +47,9 @@ while bingo_cou < 3:
 
     idx = bingo_num_li.index(num)
     bingo_num_li[idx] = " *"
-    output_bingo(bingo_num_li, masu)
+    output_bingo(bingo_num_li, size)
     
-    bingo_cou = count_bingos(bingo_num_li, masu)
+    bingo_cou = count_bingos(bingo_num_li, size)
     print(f"\n현재 빙고 수: {bingo_cou}")
 
 print("\n3개의 빙고를 완성했습니다! 게임을 종료합니다.")
