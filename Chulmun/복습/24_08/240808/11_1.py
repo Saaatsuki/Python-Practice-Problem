@@ -27,4 +27,4 @@ while pas_len < 8:
 
 
 password = getPassword(pas_len)
-print("生成されたPassword:", password)
+print("Password:", password)
