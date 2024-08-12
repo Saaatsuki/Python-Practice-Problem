@@ -9,7 +9,7 @@ else:
     if "A" in result:
         num1 = 4.0
     elif "B" in result:
-        num2 = 3.0
+        num1 = 3.0
     elif "C" in result:
         num1 = 2.0
     elif "D" in result:

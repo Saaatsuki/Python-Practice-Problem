@@ -6,3 +6,7 @@ for num in range(1,num1+1):
     if N == 0:
         li.append(num)
 
+if len(li) < num2:
+    print(0)
+else:
+    print(li[num2-1])
