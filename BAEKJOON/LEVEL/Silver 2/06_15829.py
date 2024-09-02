@@ -16,3 +16,6 @@ for i in range(N):
     power_r = (power_r * r) % M
 
 print(hash_value)
+
+
+
