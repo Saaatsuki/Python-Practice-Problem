@@ -15,4 +15,4 @@ for num in range(1,S+1):
 
 ans = N_kake / (K_kake * S_kake)
 
-print(ans)
+print(int(ans))
