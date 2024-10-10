@@ -1,0 +1,1 @@
+li = list(map(int,input().split(",")))
