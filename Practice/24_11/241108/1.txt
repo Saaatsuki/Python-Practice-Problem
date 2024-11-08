@@ -1,0 +1,86 @@
+Jetson NanoでOpenCVをインストールするためには、OpenCVをビルドしてインストールする方法が一般的です。以下に、Jetson NanoでのOpenCVインストール手順を示します。
+
+### 1. Jetson Nanoのセットアップ
+まず、Jetson Nanoの初期セットアップが済んでいることを確認してください。必要に応じて以下のようにシステムを最新に更新します。
+
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
+### 2. 必要なパッケージのインストール
+OpenCVのビルドに必要なパッケージをインストールします。
+
+```bash
+sudo apt install -y build-essential cmake git unzip pkg-config
+sudo apt install -y libjpeg-dev libpng-dev libtiff-dev
+sudo apt install -y libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+sudo apt install -y libxvidcore-dev libx264-dev
+sudo apt install -y libgtk-3-dev
+sudo apt install -y libatlas-base-dev gfortran
+sudo apt install -y python3-dev python3-numpy
+```
+
+### 3. OpenCVソースコードのダウンロード
+公式リポジトリからOpenCVのソースコードをダウンロードします。
+
+```bash
+cd ~
+git clone https://github.com/opencv/opencv.git
+git clone https://github.com/opencv/opencv_contrib.git
+cd opencv
+git checkout 4.x  # 最新版を取得するためにリリースバージョンを指定します
+cd ../opencv_contrib
+git checkout 4.x
+```
+
+### 4. CMakeでビルド設定
+ビルドディレクトリを作成し、CMakeで設定を行います。
+
+```bash
+cd ~/opencv
+mkdir build
+cd build
+```
+
+以下のコマンドを実行して、CMakeで設定を行います。Jetson Nano向けにいくつかの最適化を含んでいます。
+
+```bash
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+      -D WITH_CUDA=ON \
+      -D ENABLE_NEON=ON \
+      -D WITH_GSTREAMER=ON \
+      -D WITH_LIBV4L=ON \
+      -D BUILD_opencv_python3=ON \
+      -D OPENCV_ENABLE_NONFREE=ON \
+      -D WITH_OPENGL=ON ..
+```
+
+### 5. OpenCVのビルド
+Jetson Nanoでのビルドには時間がかかります。以下のコマンドでビルドを開始します。
+
+```bash
+make -j4  # Jetson NanoのCPUコア数分のスレッドでビルドします
+```
+
+### 6. インストール
+ビルドが完了したら、以下のコマンドでOpenCVをインストールします。
+
+```bash
+sudo make install
+sudo ldconfig
+```
+
+### 7. OpenCVのインストール確認
+PythonでOpenCVが正しくインストールされたか確認します。
+
+```bash
+python3 -c "import cv2; print(cv2.__version__)"
+```
+
+このコマンドで、OpenCVのバージョンが出力されればインストールは成功です。
+
+### 注意事項
+Jetson Nanoのリソースは限られているため、ビルドには時間がかかることがあります。
