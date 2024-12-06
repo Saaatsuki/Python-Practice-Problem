@@ -130,14 +130,169 @@ def filter_white_yellow(image):
 
     return result
 
-# --- 中略 ---
+# 画像保存用スレッド
+def capture_and_save_image_task():
+    while True:
+        try:
+            # キューからタスクを取得
+            task = task_queue.get()
+            if task is None:  # Noneなら終了
+                break
 
-# プログラム終了時の後処理
-set_servo_angle(DEFAULT_ANGLE)
-pwm_dc.stop()
-GPIO.cleanup()
-cap.release()
-cv2.destroyAllWindows()
+            speed, angle, count = task
+
+            cap.grab()
+            ret, frame = cap.read()
+            if ret:
+                # 画像をROI（注目領域）に変換
+                h, w = frame.shape[:2]
+                y1 = h // 3  # 高さの1/3地点
+                y2 = h
+                roi = frame[y1:y2, :]
+
+                # 60 x 60 サイズにリサイズ
+                resized = cv2.resize(roi, (60, 60))
+
+                # 白線・黄色線のフィルタ処理
+                mask = filter_white_yellow(resized)
+
+                # 保存ディレクトリの構成
+                speed_dir = os.path.join(base_dir, f"speed_{speed}")
+                angle_dir = os.path.join(speed_dir, f"angle_{angle}")
+                os.makedirs(angle_dir, exist_ok=True)
+
+                # 画像の保存
+                filename = os.path.join(angle_dir, f"{count:04d}.jpg")
+                cv2.imwrite(filename, mask)
+                print(f"画像を保存しました: {filename}")
+
+                # 最近のファイルを更新
+                recent_files.append(filename)
+                if len(recent_files) > 10:
+                    recent_files.pop(0)  # 最新10件のみ保存
+
+        except Exception as e:
+            print(f"画像保存エラー: {e}")
+
+# 最近保存したファイルを削除
+def delete_recent_files():
+    global recent_files
+    if recent_files:
+        print("最近の10件のファイルを削除中...")
+        for file_path in reversed(recent_files):
+            try:
+                os.remove(file_path)
+                print(f"削除しました: {file_path}")
+            except FileNotFoundError:
+                print(f"ファイルが見つかりません: {file_path}")
+        recent_files.clear()
+    else:
+        print("削除するファイルがありません")
+
+# 画像保存スレッドの開始
+image_thread = threading.Thread(target=capture_and_save_image_task)
+image_thread.start()
+
+# ---以下、イベント処理やGUIの処理
+
+# キャプチャのリクエスト関数
+capture_count = 0
+def request_capture():
+    global capture_count
+    
+    # 作業キューにリクエストを追加
+    task_queue.put((current_speed, current_angle, capture_count))
+    capture_count += 1
+
+# 速度を増加させる関数（Fキー）
+def increase_speed():
+    global current_speed
+    if current_speed + SPEED_STEP <= 100:
+        current_speed += SPEED_STEP
+        print("速度を増加しました:", current_speed)
+        # 現在前進または後退中の場合、速度を更新
+        if key_pressed['w'] or key_pressed['s']:
+            pwm_dc.ChangeDutyCycle(current_speed)
+    else:
+        print("最大速度に達しました")
+
+# 速度を減少させる関数（Gキー）
+def decrease_speed():
+    global current_speed
+    if current_speed - SPEED_STEP >= SPEED_STEP:
+        current_speed -= SPEED_STEP
+        print("速度を減少しました:", current_speed)
+        # 現在前進または後退中の場合、速度を更新
+        if key_pressed['w'] or key_pressed['s']:
+            pwm_dc.ChangeDutyCycle(current_speed)
+    else:
+        print("最小速度に達しました")
+
+# キー状態を管理する辞書（W、Sキー）
+key_pressed = {
+    'w': False,
+    's': False
+}
+
+# キーが押されたときの処理
+def on_key_press(event):
+    if event.keysym == 'a':
+        set_servo_angle(current_angle - ANGLE_STEP)  # 左に角度調整
+    elif event.keysym == 'd':
+        set_servo_angle(current_angle + ANGLE_STEP)  # 右に角度調整
+    if event.keysym == 'w':
+        key_pressed['w'] = True  # 前進
+    elif event.keysym == 's':
+        key_pressed['s'] = True  # 後退
+    if event.keysym == 'f':
+        increase_speed()  # Fキーで速度増加
+    elif event.keysym == 'g':
+        decrease_speed()  # Gキーで速度減少
+    elif event.keysym == 'BackSpace':
+        delete_recent_files()  # BackSpaceで最近のファイルを削除
+    if event.keysym == "Escape":
+        root.quit()  # Escapeキーで終了
+
+# キーが離されたときの処理
+def on_key_release(event):
+    if event.keysym == 'w':
+        key_pressed['w'] = False  # 前進停止
+    if event.keysym == 's':
+        key_pressed['s'] = False  # 後退停止
+
+# キー状態を定期的にチェックする関数
+def check_keys(): 
+    if key_pressed['w']:
+        move_forward()  # 前進
+        request_capture()  # 画像保存リクエスト
+    elif key_pressed['s']:
+        move_backward()  # 後退
+        request_capture()  # 画像保存リクエスト
+    else:
+        stop_motors()  # モーター停止
+
+    # 100ms毎にキー状態をチェック
+    root.after(100, check_keys)
+
+# Tkinter GUIの設定
+root = tk.Tk()
+
+# キーボードイベントのバインディング
+root.bind('<KeyPress>', on_key_press)
+root.bind('<KeyRelease>', on_key_release)
+
+# キー状態の確認
+check_keys()
+
+# Tkinterのメインループ
+root.mainloop()
+
+# プログラム終了時のGPIOのクリーンアップ
+set_servo_angle(DEFAULT_ANGLE)  # サーボモーターを中立角度に戻す
+pwm_dc.stop()  # DCモーターのPWM停止
+GPIO.cleanup()  # GPIOのクリーンアップ
+cap.release()  # カメラを解放
+cv2.destroyAllWindows()  # OpenCVウィンドウを破棄
 
 # スレッド終了信号を送信
 task_queue.put(None)
