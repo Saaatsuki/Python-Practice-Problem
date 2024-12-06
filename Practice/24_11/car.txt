@@ -27,6 +27,21 @@ bash: nvidia-smi: command not found
 
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
+
+インストール手順
+TensorFlowのインストール
+
+bash
+コードをコピーする
+pip install tensorflow==2.6.0
+または、対応するバージョンを以下のように指定してください。
+
+GPUサポートのインストール GPU環境で利用する場合、必要なドライバーとCUDAツールキットをインストールした後に以下を実行します：
+
+bash
+コードをコピーする
+pip install tensorflow-gpu==2.6.0
+
 ---
 
 ## **エラーの原因と解決手順**
