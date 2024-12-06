@@ -1,3 +1,11 @@
+(tf) kawai@kawai-desktop:~$ python3 -c "import torch; print(torch.__version__)"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'torch'
+(tf) kawai@kawai-desktop:~$ python3 -c "import torchvision; print(torchvision.__version__)"
+
+
+
 2. PyTorchを使ったJetsonでのセットアップ
 Jetson NanoでPyTorchを活用する際の追加ステップです。
 
