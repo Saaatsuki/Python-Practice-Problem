@@ -1,5 +1,7 @@
 # サーボモーターとDCモーターのテストコード
 # 必要なライブラリをインポート
+# https://bootstrap.pypa.io/get-pip.py
+
 import Jetson.GPIO as GPIO
 import time
 import tkinter as tk
