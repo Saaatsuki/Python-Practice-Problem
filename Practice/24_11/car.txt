@@ -1,3 +1,30 @@
+2. PyTorchを使ったJetsonでのセットアップ
+Jetson NanoでPyTorchを活用する際の追加ステップです。
+
+ライブラリの確認
+既にPyTorchとTorchvisionがインストールされているため、簡単に確認します。
+
+bash
+コードをコピーする
+python3 -c "import torch; print(torch.__version__)"
+python3 -c "import torchvision; print(torchvision.__version__)"
+出力が以下のようになっていれば問題ありません：
+
+コードをコピーする
+1.9.0
+0.10.0
+CUDAサポートの確認
+PyTorchがGPUを正しく使用できるか確認します。
+
+python
+コードをコピーする
+import torch
+print(torch.cuda.is_available())
+Trueと表示されれば、CUDAが有効です。
+
+
+
+
 エラーの原因は、現在の環境（Pythonバージョンや依存ツールなど）とTensorFlowの互換性が合っていないことにあります。以下に解決方法を説明します。
 
 ### 環境の問題点
