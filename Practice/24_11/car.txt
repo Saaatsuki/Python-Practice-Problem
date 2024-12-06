@@ -24,6 +24,82 @@ This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
 
+
+エラーの原因は、現在の環境（Pythonバージョンや依存ツールなど）とTensorFlowの互換性が合っていないことにあります。以下に解決方法を説明します。
+
+### 環境の問題点
+1. **Python バージョン**: 現在の環境では `Python 3.6.9` を使用しています。  
+   TensorFlow 2.6.0 は Python 3.6 に対応していますが、現在の最新バージョンの TensorFlow は Python 3.9 以上が必要です。
+   
+2. **GCC バージョン**: TensorFlow 2.6.0 以降では GCC 7.3.1 以上が推奨されますが、現在の GCC 7.5.0 は条件を満たしています。
+
+3. **CUDA および cuDNN**: TensorFlow の GPU サポートを使用する場合、対応する CUDA と cuDNN バージョンが必要です。あなたの環境がそれを満たしているか不明です。
+
+---
+
+### 解決策
+#### 1. TensorFlow バージョンを 2.6.0 に固定する
+Python 3.6.9 のままで進める場合、以下の手順を試してください。
+
+1. 仮想環境に入る（すでに仮想環境 `(tf)` にいる場合はこの手順をスキップしてください）。
+
+2. 必要な依存関係をインストール：
+   ```bash
+   pip install numpy==1.19.5
+   ```
+
+3. TensorFlow 2.6.0 をインストール：
+   ```bash
+   pip install tensorflow==2.6.0
+   ```
+
+---
+
+#### 2. Python バージョンをアップグレードする
+TensorFlow の最新バージョンを使用したい場合、Python バージョンを 3.9 以上にアップグレードする必要があります。
+
+1. **Python を 3.9 に更新**:
+   - Ubuntu 18.04 で以下を実行して Python をアップグレードします：
+     ```bash
+     sudo add-apt-repository ppa:deadsnakes/ppa
+     sudo apt update
+     sudo apt install python3.9 python3.9-venv python3.9-dev
+     ```
+
+2. **新しい仮想環境を作成**:
+   ```bash
+   python3.9 -m venv tf_env
+   source tf_env/bin/activate
+   ```
+
+3. TensorFlow をインストール:
+   ```bash
+   pip install --upgrade pip
+   pip install tensorflow
+   ```
+
+---
+
+#### 3. GPU サポートを有効にする場合
+GPU バージョンを使用したい場合、以下が必要です。
+
+1. **CUDA と cuDNN をインストール**:
+   - TensorFlow 2.6.0 の場合は CUDA 11.2 と cuDNN 8.1 が必要です。
+   - NVIDIA の公式ドキュメントを参照して適切なバージョンをインストールします。
+
+2. 必要なパッケージをインストール：
+   ```bash
+   pip install tensorflow-gpu==2.6.0
+   ```
+
+---
+
+### 注意
+環境を変更する前に、まず使用する Python バージョンを確認して、対応する TensorFlow バージョンを選択してください。GPU を使用する場合は CUDA や cuDNN との互換性も確認が必要です。
+
+進める中でさらにエラーが発生した場合は、詳細なエラーメッセージを教えてください。
+
+
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 
