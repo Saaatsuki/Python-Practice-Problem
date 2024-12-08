@@ -2,6 +2,66 @@ https://developer.nvidia.com/embedded/jetpack
 
 
 
+PyTorch 1.9.0をJetsonにインストールする方法を、小学生でもわかるように順を追って説明しますね。
+
+1. 必要なものを準備する
+
+まず、PyTorchをインストールするためには、JetsonデバイスにJetPackというソフトウェアがインストールされている必要があります。これをインストールしていない場合は、JetPackをインストールしてください。
+
+また、PyTorchをインストールするために必要なシステムパッケージもインストールします。次のコマンドを使って、これを実行してください。
+
+sudo apt-get -y update
+sudo apt-get install -y python3-pip libopenblas-dev
+
+2. PyTorchのインストール準備をする
+
+Jetsonには、PyTorchをインストールするためのファイル（wheelファイル）があります。そのため、まずPyTorchのインストールファイルを準備する必要があります。
+
+まず、PyTorchのインストール用のリンクを使って、ファイルをダウンロードします。
+
+例えば、次のコマンドを実行します（ここでは、JetPack 4.5の場合の例です）。
+
+export TORCH_INSTALL=https://developer.download.nvidia.com/compute/redist/jp/v45/pytorch/torch-1.9.0-cp36-cp36m-linux_aarch64.whl
+
+これは、PyTorch 1.9.0のインストールファイルを指しています。
+
+3. PyTorchをインストールする
+
+次に、PyTorchをインストールします。以下のコマンドを使ってインストールします。
+
+python3 -m pip install --upgrade pip
+python3 -m pip install numpy==1.26.1
+python3 -m pip install --no-cache $TORCH_INSTALL
+
+これで、PyTorch 1.9.0がインストールされます。もし他のバージョンをインストールしたい場合は、TORCH_INSTALLのリンクを変更すれば別のバージョンもインストールできます。
+
+4. インストールの確認
+
+インストールが成功したか確認するために、Pythonを開いてPyTorchをインポートします。次のコマンドをターミナルで実行してください。
+
+$ python3
+
+次に、Pythonの中で以下のように入力してみてください。
+
+>>> import torch
+
+エラーが出なければ、PyTorchが正しくインストールされている証拠です。
+
+5. PyTorchのアンインストール方法（必要な場合）
+
+もしPyTorchをアンインストールしたい場合は、次のコマンドを実行します。
+
+$ sudo pip3 uninstall -y torch
+
+これでPyTorchが削除されます。
+
+
+---
+
+これでPyTorch 1.9.0のインストールが完了です！質問があれば、遠慮なく聞いてくださいね。
+
+
+
 
 
 
