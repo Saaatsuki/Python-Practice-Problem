@@ -1,3 +1,163 @@
+以下は、NVIDIAのPyTorchをJetsonプラットフォームにインストールするためのガイドの日本語訳です。
+
+
+---
+
+PyTorch for Jetsonプラットフォームのインストール
+
+概要
+
+PyTorch (for JetPack) は、GPUとCPUを利用したディープラーニング用に最適化されたテンソルライブラリです。自動微分は、関数層とニューラルネットワーク層の両方でテープベースのシステムを使用して行われます。この機能により、柔軟性が高く、高速なディープラーニングフレームワークとしての特性を持ち、NumPyのような機能を加速化できます。これらは、GPUアクセラレーションとcuDNNのサポートを備えたPyTorchのPython pipホイールインストーラーです。これらのパッケージは、指定されたJetPackバージョンの上にインストールすることを前提としています。
+
+Jetson AGX Xavier
+
+NVIDIAのJetson AGX Xavier開発キットは、Jetsonプラットフォーム向けの世界初の自律機械用AIコンピュータです。Jetson AGX Xavierは、30W未満の消費電力でGPUワークステーションのパフォーマンスを提供します。
+
+Jetson AGX Orin
+
+NVIDIAのJetson AGX Orin開発キットは、高性能で省電力なJetson AGX Orinモジュールを搭載しており、他のJetsonモジュールをエミュレートすることができます。これにより、最先端のロボットや自律機械の開発に必要な性能を提供します。
+
+Jetson Xavier NX
+
+NVIDIAのJetson Xavier NXは、エッジ向けにスーパコンピュータの性能を提供する小型のシステムオンモジュールです。21TOPSの加速コンピューティングで、並列処理や高解像度センサーからのデータ処理を実行できます。これは完全なAIシステムに必要な性能を提供します。
+
+1.1. PyTorch for Jetsonプラットフォームの利点
+
+JetsonプラットフォームにPyTorchをインストールすることで、軽量でモバイルなプラットフォーム上で最新バージョンのフレームワークを利用することができます。
+
+
+---
+
+2. 前提条件とインストール
+
+PyTorchをJetsonにインストールする前に、次の準備を行う必要があります。
+
+1. JetPackをJetsonデバイスにインストールしてください。
+
+
+2. PyTorchに必要なシステムパッケージをインストールします。
+
+
+
+sudo apt-get -y update
+sudo apt-get install -y python3-pip libopenblas-dev
+
+JetPack 24.06以降のPyTorchをインストールする場合、cusparseltを最初にインストールする必要があります。以下のコマンドでインストールできます。
+
+wget https://raw.githubusercontent.com/pytorch/pytorch/5c6af2b583709f6176898c017424dc9981023c28/.ci/docker/common/install_cusparselt.sh
+export CUDA_VERSION=12.1
+bash ./install_cusparselt.sh
+
+次に、PyTorchをインストールします。
+
+export TORCH_INSTALL=https://developer.download.nvidia.cn/compute/redist/jp/v511/pytorch/torch-2.0.0+nv23.05-cp38-cp38-linux_aarch64.whl
+
+または、ホイールファイルをダウンロードして設定します。
+
+export TORCH_INSTALL=path/to/torch-2.2.0a0+81ea7a4+nv23.12-cp38-cp38-linux_aarch64.whl
+
+PyTorchをインストールします。
+
+python3 -m pip install --upgrade pip
+python3 -m pip install numpy=='1.26.1'
+python3 -m pip install --no-cache $TORCH_INSTALL
+
+特定のバージョンをインストールする場合は、TORCH_INSTALLを以下のように変更します。
+
+https://developer.download.nvidia.com/compute/redist/jp/v$JP_VERSION/pytorch/$PYT_VERSION
+
+ここで：
+
+JP_VERSION は、使用しているJetPackのメジャーおよびマイナーバージョン（例：JetPack 4.6.1の場合は461）。
+
+PYT_VERSION は、PyTorchホイールのリリースバージョンです。
+
+
+
+---
+
+2.1. 複数バージョンのPyTorchのインストール
+
+複数のPyTorchバージョンを同時に使用する場合、仮想環境を使ってインストールできます。
+
+仮想環境のセットアップ
+
+sudo apt-get install virtualenv
+python3 -m virtualenv -p python3 <chosen_venv_name>
+
+仮想環境のアクティベート
+
+source <chosen_venv_name>/bin/activate
+
+必要なバージョンのPyTorchをインストール
+
+pip3 install --no-cache https://developer.download.nvidia.com/compute/redist/jp/v51/pytorch/<torch_version_desired>
+
+仮想環境の終了
+
+deactivate
+
+仮想環境をアクティベートして、PyTorchの特定バージョンを実行します。
+
+source <chosen_venv_name>/bin/activate
+<PyTorchのスクリプトを実行>
+deactivate
+
+
+---
+
+2.2. PyTorchのアップグレード
+
+新しいリリースがある場合、現在のPyTorchバージョンをアンインストールし、再インストールすることでアップグレードできます。
+
+
+---
+
+3. インストール確認
+
+PyTorchが正しくインストールされたかどうかを確認するためには、Pythonプロンプトを開き、PyTorchをインポートします。
+
+以下のコマンドを実行します。
+
+export LD_LIBRARY_PATH=/usr/lib/llvm-8/lib:$LD_LIBRARY_PATH
+python3
+
+次に、PyTorchをインポートします。
+
+>>> import torch
+
+PyTorchが正しくインストールされていれば、このコマンドはエラーなく実行されます。
+
+
+---
+
+4. アンインストール
+
+PyTorchをアンインストールするには、以下のコマンドを実行します。
+
+sudo pip3 uninstall -y torch
+
+
+---
+
+5. トラブルシューティング
+
+Jetsonプラットフォーム特有の問題については、NVIDIAのJetsonおよび埋め込みシステムコミュニティに参加して、ディスカッションを行ってください。
+
+
+---
+
+このドキュメントは情報提供を目的としており、製品の特定の機能、状態、品質について保証するものではありません。NVIDIAは、この文書に含まれる情報の正確性や完全性について一切の保証を行いません。
+
+
+---
+
+© 2022-2024 NVIDIA Corporation & Affiliates. All rights reserved.
+
+
+
+
+
 JetPack 4.4 (L4T R32.4.3) / JetPack 4.4.1 (L4T R32.4.4) / JetPack 4.5 (L4T R32.5.0) / JetPack 4.5.1 (L4T R32.5.1) / JetPack 4.6 (L4T R32.6.1)
 Python 3.6 - torch-1.9.0-cp36-cp36m-linux_aarch64.whl
 
