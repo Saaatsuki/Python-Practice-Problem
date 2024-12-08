@@ -1,3 +1,80 @@
+JetPack 4.4 (L4T R32.4.3) / JetPack 4.4.1 (L4T R32.4.4) / JetPack 4.5 (L4T R32.5.0) / JetPack 4.5.1 (L4T R32.5.1) / JetPack 4.6 (L4T R32.6.1)
+Python 3.6 - torch-1.9.0-cp36-cp36m-linux_aarch64.whl
+
+
+以下は、Jetson Nano、TX1/TX2、Xavier、Orin用の、JetPack 4.2以降に対応した事前ビルドされたPyTorchのpip wheelインストーラーです。
+
+注意：Jetson用の今後のPyTorch wheelは以下から入手できます： https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html
+
+お使いのJetPackバージョンに対応するPyTorchバイナリを以下からダウンロードし、Jetsonで実行するためのインストール手順を確認してください。これらのpip wheelはARM aarch64アーキテクチャ向けにビルドされているため、ホストPCではなくJetson上でコマンドを実行してください。また、jetson-containersからコンテナを使用することもできます。
+
+PyTorch pip wheels
+
+JetPack 6
+
+PyTorch v2.3.0
+
+PyTorch v2.2.0
+
+PyTorch v2.1.0
+
+
+JetPack 5
+
+PyTorch v2.1.0
+
+PyTorch v2.0.0
+
+PyTorch v1.14.0
+
+PyTorch v1.13.0
+
+PyTorch v1.12.0
+
+PyTorch v1.11.0
+
+
+JetPack 4
+
+PyTorch v1.10.0
+
+PyTorch v1.9.0
+
+PyTorch v1.8.0
+
+PyTorch v1.7.0
+
+PyTorch v1.6.0
+
+PyTorch v1.5.0
+
+PyTorch v1.4.0
+
+PyTorch v1.3.0
+
+PyTorch v1.2.0
+
+PyTorch v1.1.0
+
+PyTorch v1.0.0
+
+
+インストール手順
+
+インストール
+
+検証
+
+ソースからビルド
+
+pipのアップグレードについて
+
+
+
+
+
+
+
 Jetson NanoにPyTorchをインストールするためには、まずpipがインストールされていない場合、pipを手動でインストールする必要があります。以下の手順で進めることができます。
 
 1. pipのインストール
