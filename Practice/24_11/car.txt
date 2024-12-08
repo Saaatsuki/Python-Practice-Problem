@@ -1,3 +1,9 @@
+https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html
+
+
+
+
+
 エラーから判断すると、現在のPython環境にPyTorch（`torch`）とTorchvisionがインストールされていないようです。この問題を解決するには、以下の手順を試してください。
 
 ---
