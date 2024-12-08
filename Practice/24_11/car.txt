@@ -1,3 +1,10 @@
+https://developer.nvidia.com/embedded/jetpack
+
+
+
+
+
+
 以下は、NVIDIAのPyTorchをJetsonプラットフォームにインストールするためのガイドの日本語訳です。
 
 
