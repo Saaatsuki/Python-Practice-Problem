@@ -1,3 +1,145 @@
+わかりました！小学生でもわかるように、この手順を簡単でわかりやすく説明します。
+
+
+---
+
+1. 準備するもの
+
+まず、この作業をするには以下のものが必要です：
+
+NVIDIA Jetson（Nanoなど）
+
+インターネット接続
+
+コマンドを入力するためのターミナル
+
+
+
+---
+
+2. 仮想環境を作る
+
+仮想環境（かそうかんきょう）というものを作ることで、必要なソフトを安全にインストールできます。
+
+手順
+
+1. ターミナルを開きます。
+
+
+2. 次のコマンドを入力してEnterを押します：
+
+sudo apt-get update
+sudo apt-get install python3-venv
+python3 -m venv myenv
+
+
+3. 次に、仮想環境を「起動」します：
+
+source myenv/bin/activate
+
+
+
+
+---
+
+3. NumPyをインストールする
+
+NumPy（ナンパイ）というソフトを先にインストールします。これを使うと、数字を簡単に計算できます。
+
+手順
+
+次のコマンドを入力してインストールします：
+
+pip install 'https://github.com/jetson-nano-wheels/python3.6-numpy-1.19.4/releases/download/v0.0.2/numpy-1.19.4-cp36-cp36m-linux_aarch64.whl'
+
+
+---
+
+4. PyTorchをインストールする
+
+次に、PyTorch（パイトーチ）というライブラリをインストールします。これは、AIや機械学習を作るための便利なツールです。
+
+手順
+
+1. PyTorchのファイルをダウンロードします：
+
+wget \
+    'https://nvidia.box.com/shared/static/h1z9sw4bb1ybi0rm3tu8qdj8hs05ljbm.whl' \
+    -O /tmp/torch-1.9.0-cp36-cp36m-linux_aarch64.whl
+
+
+2. ダウンロードしたファイルをインストールします：
+
+pip install /tmp/torch-1.9.0-cp36-cp36m-linux_aarch64.whl
+
+
+
+
+---
+
+5. 動作確認をする
+
+最後に、PyTorchが正しく動いているか確認しましょう。
+
+手順
+
+次のコマンドを入力します：
+
+python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
+
+結果
+
+「1.9.0」と表示されればバージョンが正しいです。
+
+「True」と表示されればGPUが使える状態です。
+
+
+
+---
+
+6. もっと良くしたい人へ
+
+もしも、この仕組みをもっと良くしたい人は、以下の手順で貢献できます。
+
+手順
+
+1. ターミナルで以下を入力して、プロジェクトをダウンロードします：
+
+git clone git@github.com:jetson-nano-wheels/python3.6-torch-1.9.0
+cd python3.6-torch-1.9.0
+
+
+2. 「新しい機能を追加するための場所」を作ります：
+
+git checkout -b feature-my-fancy-addition
+
+
+3. 初期設定を実行します：
+
+./init.sh
+
+
+4. 改良した後、変更を保存してGitHubに送ります：
+
+git add .
+git commit -m "自分の変更について説明を書く"
+git push origin feature-my-fancy-addition
+
+
+5. GitHubで「プルリクエスト」というものを送ります。
+
+
+
+
+---
+
+これで完了です！何か困ったことがあったら、また聞いてくださいね！
+
+
+
+
+
+
 https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html
 
 
