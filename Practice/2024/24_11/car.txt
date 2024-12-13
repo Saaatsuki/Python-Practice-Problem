@@ -1,3 +1,130 @@
+LinuxでPythonを仮想環境（virtual environment）で実行する手順を説明します。この方法はプロジェクトごとに依存関係を分離できるので便利です。
+
+---
+
+### **手順 1: 必要なパッケージをインストールする**
+
+まず、Pythonと仮想環境を作成するためのツールがインストールされているか確認します。
+
+```bash
+sudo apt update
+sudo apt install python3 python3-venv python3-pip
+```
+
+- `python3`: Pythonの本体。
+- `python3-venv`: 仮想環境を作成するためのツール。
+- `python3-pip`: Pythonパッケージ管理ツール。
+
+---
+
+### **手順 2: 仮想環境を作成する**
+
+1. プロジェクト用のディレクトリを作成します。
+
+```bash
+mkdir my_project
+cd my_project
+```
+
+2. 仮想環境を作成します。
+
+```bash
+python3 -m venv venv
+```
+
+- `venv` は仮想環境のディレクトリ名です。好きな名前を付けてもOK。
+
+---
+
+### **手順 3: 仮想環境を有効化する**
+
+仮想環境を有効化します。
+
+```bash
+source venv/bin/activate
+```
+
+- 有効化されると、ターミナルのプロンプトに `(venv)` と表示されます。
+
+例:
+```bash
+(venv) user@hostname:~/my_project$
+```
+
+---
+
+### **手順 4: Pythonを実行する**
+
+仮想環境内でPythonを実行したり、必要なパッケージをインストールします。
+
+1. Pythonを実行する。
+
+```bash
+python
+```
+
+**結果:**  
+Pythonのインタラクティブシェルが起動します。終了するには、`exit()` と入力してください。
+
+2. 必要なパッケージをインストールする。
+
+```bash
+pip install <package_name>
+```
+
+例:
+```bash
+pip install numpy
+```
+
+3. 作成したスクリプトを仮想環境内で実行する。
+
+```bash
+python my_script.py
+```
+
+---
+
+### **手順 5: 仮想環境を無効化する**
+
+作業が終わったら仮想環境を無効化します。
+
+```bash
+deactivate
+```
+
+- `(venv)` が消え、通常のシェルに戻ります。
+
+---
+
+### **補足情報**
+- **依存関係を保存・共有する方法**:
+  仮想環境内でインストールしたパッケージリストを保存するには、以下のコマンドを使用します。
+
+```bash
+pip freeze > requirements.txt
+```
+
+これを使えば、他の人が同じ環境を再現できます。
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+これでLinux上で仮想環境を使ったPythonの実行方法をマスターできます！ 😊
+
+
+
+
+
+
+
+
+
+
+
 https://developer.nvidia.com/embedded/jetpack
 
 
