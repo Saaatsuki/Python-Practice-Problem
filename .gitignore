@@ -1,1 +1,3 @@
 *.zip
+CAR/speed_30/*
+venv/*
