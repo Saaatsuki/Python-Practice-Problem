@@ -1,3 +1,51 @@
+既存の `.venv` 仮想環境に新しい Python ファイルを作成して実行する手順を以下に示します。
+
+### 1. 仮想環境をアクティブにする
+まず、仮想環境をアクティブにします。
+
+- ターミナルで以下を実行して、仮想環境を有効にします。
+  ```bash
+  source .venv/bin/activate
+  ```
+
+  ※仮想環境が正しく設定されていない場合は、`.venv` フォルダが存在しないかもしれません。その場合は、仮想環境を再作成してください。
+
+### 2. 必要なパッケージをインストールする（必要に応じて）
+仮想環境内で依存するパッケージ（例えば `torch` や `opencv-python` など）をインストールします。
+
+```bash
+pip install torch opencv-python
+```
+
+### 3. 新しい Python ファイルを作成する
+新しい Python ファイルを作成します。例えば、`my_new_script.py` という名前で新しいファイルを作成します。
+
+```bash
+nano my_new_script.py
+```
+
+### 4. Python スクリプトのコードを記述する
+`my_new_script.py` ファイルに、実行したいコード（例: 画像処理、モーター制御など）を記述します。
+
+### 5. スクリプトを実行する
+仮想環境内でスクリプトを実行します。
+
+```bash
+python my_new_script.py
+```
+
+これで、仮想環境内で新しい Python ファイルを作成して実行できます。
+
+### 仮想環境を終了する
+作業が終わったら、仮想環境を終了します。
+
+```bash
+deactivate
+```
+
+以上の手順で、既存の `.venv` 仮想環境内で新しい Python スクリプトを作成し、実行することができます。
+
+
 kawai@kawai-desktop:~$ nano majima.py
 kawai@kawai-desktop:~$ python3 majima.py
 Traceback (most recent call last):
