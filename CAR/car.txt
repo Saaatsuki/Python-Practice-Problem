@@ -1,3 +1,55 @@
+kawai@kawai-desktop:~$ python3 majima1.py 
+Traceback (most recent call last):
+  File "majima1.py", line 47, in <module>
+    model = torch.load("model.pth", map_location=device)  # 学習済みモデル
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 579, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+IsADirectoryError: [Errno 21] Is a directory: 'model.pth'
+Exception ignored in: <bound method PWM.__del__ of <Jetson.GPIO.gpio.PWM object at 0x7fa4adeb00>>
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 644, in __del__
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 660, in stop
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 278, in _disable_pwm
+LookupError: unknown encoding: ascii
+Exception ignored in: <bound method PWM.__del__ of <Jetson.GPIO.gpio.PWM object at 0x7f4db42748>>
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 644, in __del__
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 660, in stop
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 278, in _disable_pwm
+LookupError: unknown encoding: ascii
+kawai@kawai-desktop:~$ vim majima1.py 
+kawai@kawai-desktop:~$ python3 majima1.py 
+Traceback (most recent call last):
+  File "majima1.py", line 47, in <module>
+    model = torch.load("model.pth", map_location=device)  # 学習済みモデル
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 579, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+IsADirectoryError: [Errno 21] Is a directory: 'model.pth'
+Exception ignored in: <bound method PWM.__del__ of <Jetson.GPIO.gpio.PWM object at 0x7f88cb1b00>>
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 644, in __del__
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 660, in stop
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 278, in _disable_pwm
+LookupError: unknown encoding: ascii
+Exception ignored in: <bound method PWM.__del__ of <Jetson.GPIO.gpio.PWM object at 0x7f31d15748>>
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 644, in __del__
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 660, in stop
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 278, in _disable_pwm
+LookupError: unknown encoding: ascii
+
+
+
+
+
 (.venv) kawai@kawai-desktop:~$ python majima1.py
 Traceback (most recent call last):
   File "majima1.py", line 1, in <module>
