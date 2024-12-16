@@ -1,3 +1,46 @@
+kawai@kawai-desktop:~$ nano majima.py
+kawai@kawai-desktop:~$ python3 majima.py
+Traceback (most recent call last):
+  File "majima.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+kawai@kawai-desktop:~$ cd
+kawai@kawai-desktop:~$ ls
+ Desktop                captured_data           mota.py           ダウンロード
+'Untitled Document 1'  "cnn.py'"                opencv_contrib    テンプレート
+'Untitled Document 2'   cnn1.py                 opencv_test.py    ドキュメント
+ __pycache__            cnnn.py                 sdmoter.py        ビデオ
+ camera_view.py         examples.desktop        sdmoter.py.save   ピクチャ
+ cameraview.py          install_cusparselt.sh   tf                ミュージック
+ cameraview.py:wq       install_torch           tmp_cusparselt    公開
+ capstone.py            majima.py               yosoku.py
+kawai@kawai-desktop:~$ source .venv/bin/active
+bash: .venv/bin/active: そのようなファイルやディレクトリはありません
+kawai@kawai-desktop:~$ ls -a
+ .                           .venv                   install_torch
+ ..                          .viminfo                majima.py
+ .ICEauthority               .wget-hsts              mota.py
+ .bash_history               .xinputrc               opencv_contrib
+ .bash_logout                .xsessionrc             opencv_test.py
+ .bashrc                     Desktop                 sdmoter.py
+ .cache                     'Untitled Document 1'    sdmoter.py.save
+ .compiz                    'Untitled Document 2'    tf
+ .config                     __pycache__             tmp_cusparselt
+ .gconf                      camera_view.py          yosoku.py
+ .gitconfig                  cameraview.py           ダウンロード
+ .gnupg                      cameraview.py:wq        テンプレート
+ .local                      capstone.py             ドキュメント
+ .nv                         captured_data           ビデオ
+ .pki                       "cnn.py'"                ピクチャ
+ .profile                    cnn1.py                 ミュージック
+ .python_history             cnnn.py                 公開
+ .ssh                        examples.desktop
+ .sudo_as_admin_successful   install_cusparselt.sh
+kawai@kawai-desktop:~$ source .venv/bin/active
+bash: .venv/bin/active: そのようなファイルやディレクトリはありません
+
+
+
 LinuxでPythonを仮想環境（virtual environment）で実行する手順を説明します。この方法はプロジェクトごとに依存関係を分離できるので便利です。
 
 ---
