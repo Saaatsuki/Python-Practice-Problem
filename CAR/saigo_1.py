@@ -185,9 +185,33 @@ image_thread.start()
 
 # イベント処理
 def on_key_press(event):
-    if event.keysym == 'Escape':
+    if event.keysym == 'Escape':  # Escapeキーでアプリケーション終了
         root.quit()
+    elif event.keysym == 's':  # sキーでスタート
+        print("スタートキーが押されました")
+        start_task()
+    elif event.keysym == 'e':  # eキーでエンド
+        print("エンドキーが押されました")
+        stop_task()
+
+def start_task():
+    print("スタートボタンが押されました")
+    # スタートボタンで動作開始
+    threading.Thread(target=capture_and_save_image_task).start()
+
+def stop_task():
+    print("エンドボタンが押されました")
+    stop_motors()
 
 root = tk.Tk()
-root.bind("<KeyPress>", on_key_press)
+root.bind("<KeyPress>", on_key_press)  # キーイベントのバインド
+
+# スタートボタンの作成
+start_button = tk.Button(root, text="スタート", command=start_task)
+start_button.pack(pady=10)
+
+# エンドボタンの作成
+stop_button = tk.Button(root, text="エンド", command=stop_task)
+stop_button.pack(pady=10)
+
 root.mainloop()
