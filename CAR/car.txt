@@ -1,3 +1,281 @@
+kawai@kawai-desktop:~$ python3 majima1.py 
+Traceback (most recent call last):
+  File "majima1.py", line 47, in <module>
+    model = torch.load("model.pth", map_location=device)  # 学習済みモデル
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 579, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+IsADirectoryError: [Errno 21] Is a directory: 'model.pth'
+Exception ignored in: <bound method PWM.__del__ of <Jetson.GPIO.gpio.PWM object at 0x7fa4adeb00>>
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 644, in __del__
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 660, in stop
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 278, in _disable_pwm
+LookupError: unknown encoding: ascii
+Exception ignored in: <bound method PWM.__del__ of <Jetson.GPIO.gpio.PWM object at 0x7f4db42748>>
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 644, in __del__
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 660, in stop
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 278, in _disable_pwm
+LookupError: unknown encoding: ascii
+kawai@kawai-desktop:~$ vim majima1.py 
+kawai@kawai-desktop:~$ python3 majima1.py 
+Traceback (most recent call last):
+  File "majima1.py", line 47, in <module>
+    model = torch.load("model.pth", map_location=device)  # 学習済みモデル
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 579, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/kawai/.local/lib/python3.6/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+IsADirectoryError: [Errno 21] Is a directory: 'model.pth'
+Exception ignored in: <bound method PWM.__del__ of <Jetson.GPIO.gpio.PWM object at 0x7f88cb1b00>>
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 644, in __del__
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 660, in stop
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 278, in _disable_pwm
+LookupError: unknown encoding: ascii
+Exception ignored in: <bound method PWM.__del__ of <Jetson.GPIO.gpio.PWM object at 0x7f31d15748>>
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 644, in __del__
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 660, in stop
+  File "/usr/lib/python3/dist-packages/Jetson/GPIO/gpio.py", line 278, in _disable_pwm
+LookupError: unknown encoding: ascii
+
+
+
+
+
+(.venv) kawai@kawai-desktop:~$ python majima1.py
+Traceback (most recent call last):
+  File "majima1.py", line 1, in <module>
+    import Jetson.GPIO as GPIO
+ModuleNotFoundError: No module named 'Jetson'
+
+
+
+既存の `.venv` 仮想環境に新しい Python ファイルを作成して実行する手順を以下に示します。
+
+### 1. 仮想環境をアクティブにする
+まず、仮想環境をアクティブにします。
+
+- ターミナルで以下を実行して、仮想環境を有効にします。
+  ```bash
+  source .venv/bin/activate
+  ```
+
+  ※仮想環境が正しく設定されていない場合は、`.venv` フォルダが存在しないかもしれません。その場合は、仮想環境を再作成してください。
+
+### 2. 必要なパッケージをインストールする（必要に応じて）
+仮想環境内で依存するパッケージ（例えば `torch` や `opencv-python` など）をインストールします。
+
+```bash
+pip install torch opencv-python
+```
+
+### 3. 新しい Python ファイルを作成する
+新しい Python ファイルを作成します。例えば、`my_new_script.py` という名前で新しいファイルを作成します。
+
+```bash
+nano my_new_script.py
+```
+
+### 4. Python スクリプトのコードを記述する
+`my_new_script.py` ファイルに、実行したいコード（例: 画像処理、モーター制御など）を記述します。
+
+### 5. スクリプトを実行する
+仮想環境内でスクリプトを実行します。
+
+```bash
+python my_new_script.py
+```
+
+これで、仮想環境内で新しい Python ファイルを作成して実行できます。
+
+### 仮想環境を終了する
+作業が終わったら、仮想環境を終了します。
+
+```bash
+deactivate
+```
+
+以上の手順で、既存の `.venv` 仮想環境内で新しい Python スクリプトを作成し、実行することができます。
+
+
+kawai@kawai-desktop:~$ nano majima.py
+kawai@kawai-desktop:~$ python3 majima.py
+Traceback (most recent call last):
+  File "majima.py", line 9, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+kawai@kawai-desktop:~$ cd
+kawai@kawai-desktop:~$ ls
+ Desktop                captured_data           mota.py           ダウンロード
+'Untitled Document 1'  "cnn.py'"                opencv_contrib    テンプレート
+'Untitled Document 2'   cnn1.py                 opencv_test.py    ドキュメント
+ __pycache__            cnnn.py                 sdmoter.py        ビデオ
+ camera_view.py         examples.desktop        sdmoter.py.save   ピクチャ
+ cameraview.py          install_cusparselt.sh   tf                ミュージック
+ cameraview.py:wq       install_torch           tmp_cusparselt    公開
+ capstone.py            majima.py               yosoku.py
+kawai@kawai-desktop:~$ source .venv/bin/active
+bash: .venv/bin/active: そのようなファイルやディレクトリはありません
+kawai@kawai-desktop:~$ ls -a
+ .                           .venv                   install_torch
+ ..                          .viminfo                majima.py
+ .ICEauthority               .wget-hsts              mota.py
+ .bash_history               .xinputrc               opencv_contrib
+ .bash_logout                .xsessionrc             opencv_test.py
+ .bashrc                     Desktop                 sdmoter.py
+ .cache                     'Untitled Document 1'    sdmoter.py.save
+ .compiz                    'Untitled Document 2'    tf
+ .config                     __pycache__             tmp_cusparselt
+ .gconf                      camera_view.py          yosoku.py
+ .gitconfig                  cameraview.py           ダウンロード
+ .gnupg                      cameraview.py:wq        テンプレート
+ .local                      capstone.py             ドキュメント
+ .nv                         captured_data           ビデオ
+ .pki                       "cnn.py'"                ピクチャ
+ .profile                    cnn1.py                 ミュージック
+ .python_history             cnnn.py                 公開
+ .ssh                        examples.desktop
+ .sudo_as_admin_successful   install_cusparselt.sh
+kawai@kawai-desktop:~$ source .venv/bin/active
+bash: .venv/bin/active: そのようなファイルやディレクトリはありません
+
+
+
+LinuxでPythonを仮想環境（virtual environment）で実行する手順を説明します。この方法はプロジェクトごとに依存関係を分離できるので便利です。
+
+---
+
+### **手順 1: 必要なパッケージをインストールする**
+
+まず、Pythonと仮想環境を作成するためのツールがインストールされているか確認します。
+
+```bash
+sudo apt update
+sudo apt install python3 python3-venv python3-pip
+```
+
+- `python3`: Pythonの本体。
+- `python3-venv`: 仮想環境を作成するためのツール。
+- `python3-pip`: Pythonパッケージ管理ツール。
+
+---
+
+### **手順 2: 仮想環境を作成する**
+
+1. プロジェクト用のディレクトリを作成します。
+
+```bash
+mkdir my_project
+cd my_project
+```
+
+2. 仮想環境を作成します。
+
+```bash
+python3 -m venv venv
+```
+
+- `venv` は仮想環境のディレクトリ名です。好きな名前を付けてもOK。
+
+---
+
+### **手順 3: 仮想環境を有効化する**
+
+仮想環境を有効化します。
+
+```bash
+source venv/bin/activate
+```
+
+- 有効化されると、ターミナルのプロンプトに `(venv)` と表示されます。
+
+例:
+```bash
+(venv) user@hostname:~/my_project$
+```
+
+---
+
+### **手順 4: Pythonを実行する**
+
+仮想環境内でPythonを実行したり、必要なパッケージをインストールします。
+
+1. Pythonを実行する。
+
+```bash
+python
+```
+
+**結果:**  
+Pythonのインタラクティブシェルが起動します。終了するには、`exit()` と入力してください。
+
+2. 必要なパッケージをインストールする。
+
+```bash
+pip install <package_name>
+```
+
+例:
+```bash
+pip install numpy
+```
+
+3. 作成したスクリプトを仮想環境内で実行する。
+
+```bash
+python my_script.py
+```
+
+---
+
+### **手順 5: 仮想環境を無効化する**
+
+作業が終わったら仮想環境を無効化します。
+
+```bash
+deactivate
+```
+
+- `(venv)` が消え、通常のシェルに戻ります。
+
+---
+
+### **補足情報**
+- **依存関係を保存・共有する方法**:
+  仮想環境内でインストールしたパッケージリストを保存するには、以下のコマンドを使用します。
+
+```bash
+pip freeze > requirements.txt
+```
+
+これを使えば、他の人が同じ環境を再現できます。
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+これでLinux上で仮想環境を使ったPythonの実行方法をマスターできます！ 😊
+
+
+
+
+
+
+
+
+
+
+
 https://developer.nvidia.com/embedded/jetpack
 
 
